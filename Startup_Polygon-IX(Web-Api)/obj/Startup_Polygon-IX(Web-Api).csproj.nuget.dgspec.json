@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\repos\\Startup_Polygon-IX(Web-Api)\\Startup_Polygon-IX(Web-Api)\\Startup_Polygon-IX(Web-Api).csproj": {}
+    "D:\\repos\\REMA\\Startup_Polygon-IX(Web-Api)\\Startup_Polygon-IX(Web-Api).csproj": {}
   },
   "projects": {
-    "D:\\repos\\Startup_Polygon-IX(Web-Api)\\Startup_Polygon-IX(Web-Api)\\Startup_Polygon-IX(Web-Api).csproj": {
+    "D:\\repos\\REMA\\Startup_Polygon-IX(Web-Api)\\Startup_Polygon-IX(Web-Api).csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\Startup_Polygon-IX(Web-Api)\\Startup_Polygon-IX(Web-Api)\\Startup_Polygon-IX(Web-Api).csproj",
+        "projectUniqueName": "D:\\repos\\REMA\\Startup_Polygon-IX(Web-Api)\\Startup_Polygon-IX(Web-Api).csproj",
         "projectName": "Startup_Polygon-IX(Web-Api)",
-        "projectPath": "D:\\repos\\Startup_Polygon-IX(Web-Api)\\Startup_Polygon-IX(Web-Api)\\Startup_Polygon-IX(Web-Api).csproj",
+        "projectPath": "D:\\repos\\REMA\\Startup_Polygon-IX(Web-Api)\\Startup_Polygon-IX(Web-Api).csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\Startup_Polygon-IX(Web-Api)\\Startup_Polygon-IX(Web-Api)\\obj\\",
+        "outputPath": "D:\\repos\\REMA\\Startup_Polygon-IX(Web-Api)\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Programs\\VisualStudioSDK\\NuGetPackages"
