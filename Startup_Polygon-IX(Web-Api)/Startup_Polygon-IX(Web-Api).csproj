@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Startup_Polygon_IX_Web_Api_</RootNamespace>
+    <EnableSdkContainerDebugging>True</EnableSdkContainerDebugging>
+    <ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:10.0</ContainerBaseImage>
+    <UserSecretsId>88b6e680-b8fb-4926-8915-dd0d0eb6d6fe</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ContainerPort Include="8081" />
+  </ItemGroup>
+
+</Project>
