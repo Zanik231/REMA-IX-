@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sDB6iWRriwM=",
+  "dgSpecHash": "y15iazko49s=",
   "success": true,
-  "projectFilePath": "D:\\repos\\REMA\\Startup_Polygon-IX(Web-Api)\\Startup_Polygon-IX(Web-Api).csproj",
+  "projectFilePath": "D:\\repos\\REMA\\WEB-API\\Startup_Polygon-IX(Web-Api).csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.12\\microsoft.aspnetcore.openapi.10.0.12.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.openapi\\2.12.0\\microsoft.openapi.2.12.0.nupkg.sha512"

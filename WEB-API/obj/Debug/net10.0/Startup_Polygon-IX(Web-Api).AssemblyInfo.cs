@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Startup_Polygon-IX(Web-Api)")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee181d3e23d67f5b0c319668454afc614c5b1225")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+94b3da38fb10180142539a54979c5d433342e9c4")]
 [assembly: System.Reflection.AssemblyProductAttribute("Startup_Polygon-IX(Web-Api)")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Startup_Polygon-IX(Web-Api)")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
