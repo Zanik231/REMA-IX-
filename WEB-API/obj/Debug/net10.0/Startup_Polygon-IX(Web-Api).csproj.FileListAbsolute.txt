@@ -156,3 +156,11 @@ D:\repos\REMA\WEB-API\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.Workspaces.MSB
 D:\repos\REMA\WEB-API\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 D:\repos\REMA\WEB-API\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 D:\repos\REMA\WEB-API\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\repos\REMA\WEB-API\obj\Debug\net10.0\compressed\bz5x3y64t8-{0}-wbcbtqnlzy-wbcbtqnlzy.gz
+D:\repos\REMA\WEB-API\obj\Debug\net10.0\compressed\w9qhoulood-{0}-8ui6hs0fq6-8ui6hs0fq6.gz
+D:\repos\REMA\WEB-API\obj\Debug\net10.0\compressed\o26gv6tnet-{0}-hprd38h232-hprd38h232.gz
+D:\repos\REMA\WEB-API\obj\Debug\net10.0\compressed\knbya8uacx-{0}-j1qr8szv2f-j1qr8szv2f.gz
+D:\repos\REMA\WEB-API\obj\Debug\net10.0\compressed\ta2bixypp0-{0}-796vz6uld4-796vz6uld4.gz
+D:\repos\REMA\WEB-API\obj\Debug\net10.0\compressed\vrpjytuubh-{0}-wulf1b1gpo-wulf1b1gpo.gz
+D:\repos\REMA\WEB-API\obj\Debug\net10.0\compressed\iht531dhkc-{0}-lc2jg7ghf3-lc2jg7ghf3.gz
+D:\repos\REMA\WEB-API\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

@@ -1,7 +1,51 @@
 [
   {
     "ContainingType": "Startup_Polygon_IX_Web_Api_.Scripts.Program\u002B\u003C\u003Ec",
-    "Method": "\u003CMain\u003Eb__1_0",
+    "Method": "\u003CMain\u003Eb__5_3",
+    "RelativePath": "api/analog/find",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Startup_Polygon_IX_Web_Api_.Scripts.Program\u002BAnalogSearchRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Startup_Polygon_IX_Web_Api_.Scripts.Program\u002B\u003C\u003Ec",
+    "Method": "\u003CMain\u003Eb__5_1",
+    "RelativePath": "api/hello_world{text_arg}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "text_arg",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Startup_Polygon_IX_Web_Api_.Scripts.Program\u002B\u003C\u003Ec",
+    "Method": "\u003CMain\u003Eb__5_2",
     "RelativePath": "api/report/calculate",
     "HttpMethod": "POST",
     "IsController": false,
@@ -13,6 +57,22 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Startup_Polygon_IX_Web_Api_.Scripts.Program\u002B\u003C\u003Ec",
+    "Method": "\u003CMain\u003Eb__5_4",
+    "RelativePath": "api/report/total-count",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": [
       {
         "Type": "System.Void",
