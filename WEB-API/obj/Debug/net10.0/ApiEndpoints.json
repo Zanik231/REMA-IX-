@@ -1,0 +1,24 @@
+[
+  {
+    "ContainingType": "Startup_Polygon_IX_Web_Api_.Scripts.Program\u002B\u003C\u003Ec",
+    "Method": "\u003CMain\u003Eb__1_0",
+    "RelativePath": "api/report/calculate",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Startup_Polygon_IX_Web_Api_.Scripts.Program\u002BAnalyticsRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 @Startup_Polygon_IX_Web_Api__HostAddress = http://localhost:5011
 
-GET {{Startup_Polygon_IX_Web_Api__HostAddress}}/weatherforecast/
+GET {{Startup_Polygon_IX_Web_Api__HostAddress}}/
 Accept: application/json
 
 ###

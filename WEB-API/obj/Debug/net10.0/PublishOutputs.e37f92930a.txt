@@ -1,0 +1,9 @@
+D:\repos\REMA\WEB-API\obj\Debug\net10.0\PubTmp\Out\Startup_Polygon-IX(Web-Api).exe
+D:\repos\REMA\WEB-API\obj\Debug\net10.0\PubTmp\Out\appsettings.Development.json
+D:\repos\REMA\WEB-API\obj\Debug\net10.0\PubTmp\Out\appsettings.json
+D:\repos\REMA\WEB-API\obj\Debug\net10.0\PubTmp\Out\Startup_Polygon-IX(Web-Api).dll
+D:\repos\REMA\WEB-API\obj\Debug\net10.0\PubTmp\Out\Startup_Polygon-IX(Web-Api).deps.json
+D:\repos\REMA\WEB-API\obj\Debug\net10.0\PubTmp\Out\Startup_Polygon-IX(Web-Api).runtimeconfig.json
+D:\repos\REMA\WEB-API\obj\Debug\net10.0\PubTmp\Out\Startup_Polygon-IX(Web-Api).pdb
+D:\repos\REMA\WEB-API\obj\Debug\net10.0\PubTmp\Out\Microsoft.AspNetCore.OpenApi.dll
+D:\repos\REMA\WEB-API\obj\Debug\net10.0\PubTmp\Out\Microsoft.OpenApi.dll
