@@ -1,10 +1,294 @@
-﻿<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LandScope — Земельные участки</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Test Page</h1>
+<header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" class="brand">
+            <span class="brand-logo">L</span>
+            <span class="brand-copy">
+                <strong>LandScope</strong>
+                <small>Market intelligence</small>
+            </span>
+        </a>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link active">
+                Земельные участки
+            </a>
+            <a href="report/quarterly/index.html" class="nav-link">
+                Отчёты по рынку
+            </a>
+            <a href="report/analogs/index.html" class="nav-link">
+                Подбор аналогов по заданной локации
+            </a>
+            <a href="#" class="nav-link disabled-link">
+                Жилая <span class="soon">скоро</span>
+            </a>
+            <a href="#" class="nav-link disabled-link">
+                Коммерческая <span class="soon">скоро</span>
+            </a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="header-icon" id="themeButton" type="button">
+                ◐
+            </button>
+            <button class="profile" type="button">
+                <span class="profile-avatar">67</span>
+                <span class="profile-name">6767676 М.</span>
+                <span class="profile-arrow">⌄</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="page">
+    <section class="intro">
+        <div>
+            <div class="eyebrow">
+                <span></span>
+                БАЗА ОБЪЕКТОВ
+            </div>
+            <h1>Земельные участки</h1>
+            <p>
+                Объявления собираются автоматически с Авито и Циана.
+                Данные в базе: <strong>2142</strong>.
+                Перед принятием решений проверяйте актуальность на источнике.
+            </p>
+        </div>
+        <div class="intro-actions">
+            <button class="secondary-button" id="refreshButton" type="button">
+                Обновить данные
+            </button>
+            <button class="primary-button" type="button">
+                Добавить выборку
+            </button>
+        </div>
+    </section>
+    <section class="filters">
+        <div class="filter-heading">
+            <div>
+                <span class="filter-label">ПАРАМЕТРЫ ПОИСКА</span>
+                <h2>Фильтрация объектов</h2>
+            </div>
+            <button id="resetFilters" class="reset-button" type="button">
+                Сбросить
+            </button>
+        </div>
+        <div class="filter-grid">
+            <label class="field">
+                <span>Район</span>
+                <select id="districtFilter">
+                    <option value="all">Все районы</option>
+                    <option>Асиновский район</option>
+                    <option>Бакчарский район</option>
+                    <option>Верхнекетский район</option>
+                    <option>Кожевниковский район</option>
+                    <option>Молчановский район</option>
+                    <option>Парабельский район</option>
+                    <option>Первомайский район</option>
+                    <option>Томск</option>
+                    <option>Томский район</option>
+                </select>
+            </label>
+            <label class="field">
+                <span>Категория земель</span>
+                <select id="categoryFilter">
+                    <option value="all">Все категории</option>
+                    <option>Земли населённых пунктов</option>
+                    <option>Земли сельхозназначения</option>
+                </select>
+            </label>
+            <label class="field">
+                <span>ВРИ</span>
+                <select id="vriFilter">
+                    <option value="all">Все ВРИ</option>
+                    <option>ИЖС</option>
+                    <option>ЛПХ</option>
+                    <option>Садоводство</option>
+                    <option>Фермерское хозяйство</option>
+                </select>
+            </label>
+            <label class="field">
+                <span>Площадь, соток</span>
+                <div class="range-fields">
+                    <input type="number" id="areaFrom" placeholder="От">
+                    <span>—</span>
+                    <input type="number" id="areaTo" placeholder="До">
+                </div>
+            </label>
+            <label class="field">
+                <span>Цена, руб.</span>
+                <div class="range-fields">
+                    <input type="number" id="priceFrom" placeholder="От">
+                    <span>—</span>
+                    <input type="number" id="priceTo" placeholder="До">
+                </div>
+            </label>
+            <button class="primary-button filter-button" id="applyFilters" type="button">
+                Найти объекты
+            </button>
+        </div>
+    </section>
+
+    <section class="list-section">
+        <div class="list-heading">
+            <div>
+                <span class="filter-label">АКТУАЛЬНЫЕ ОБЪЯВЛЕНИЯ</span>
+                <h2>Объявления</h2>
+                <p>
+                    Отсортированы по дате публикации, новые сверху.
+                </p>
+            </div>
+            <div class="search-box">
+                <span>⌕</span>
+                <input id="searchInput" type="text" placeholder="Поиск по адресу...">
+            </div>
+        </div>
+        <div class="objects-list">
+            <article class="object-card">
+                <div class="object-visual visual-one">
+                    <span>ЗЕМЛЯ</span>
+                </div>
+                <div class="object-main">
+                    <div class="object-title-row">
+                        <div>
+                            <h3>
+                                Комсомольск, ул. Полевая, 193
+                            </h3>
+                            <div class="object-meta">
+                                <span class="source avito">Авито</span>
+                                <span>18 сентября 2026 г.</span>
+                            </div>
+                        </div>
+                        <span class="object-status">
+                            Новый
+                        </span>
+                    </div>
+                    <div class="object-tags">
+                        <span>15 соток</span>
+                        <span>ИЖС</span>
+                        <span>свет</span>
+                    </div>
+                    <p>
+                        В продаже земельный участок 15 соток.
+                        Проведены: электричество.
+                    </p>
+                    <div class="object-footer">
+                        <div>
+                            <strong>946 000 ₽</strong>
+                            <span>63 067 ₽/сотка</span>
+                        </div>
+                        <a
+                            href="https://www.avito.ru/tomsk/zemlya/9726178"
+                            target="_blank"
+                            class="object-link">
+                            Открыть на Авито
+                        </a>
+                    </div>
+                </div>
+            </article>
+            <article class="object-card">
+                <div class="object-visual visual-two">
+                    <span>ЗЕМЛЯ</span>
+                </div>
+                <div class="object-main">
+                    <div class="object-title-row">
+                        <div>
+                            <h3>
+                                Ярское, ул. Садовая, 140
+                            </h3>
+                            <div class="object-meta">
+                                <span class="source cian">Циан</span>
+                                <span>17 сентября 2026 г.</span>
+                            </div>
+                        </div>
+                        <span class="object-status">
+                            Проверен
+                        </span>
+                    </div>
+                    <div class="object-tags">
+                        <span>30 соток</span>
+                        <span>Садоводство</span>
+                        <span>газ</span>
+                        <span>свет</span>
+                        <span>вода</span>
+                    </div>
+                    <p>
+                        В продаже земельный участок 30 соток.
+                        Проведены: газ, электричество, вода.
+                    </p>
+                    <div class="object-footer">
+                        <div>
+                            <strong>3 612 000 ₽</strong>
+                            <span>120 400 ₽/сотка</span>
+                        </div>
+                        <a
+                            href="https://tomsk.cian.ru/sale/suburban/9602608/"
+                            target="_blank"
+                            class="object-link">
+                            Открыть на Циан
+                        </a>
+                    </div>
+                </div>
+            </article>
+            <article class="object-card">
+                <div class="object-visual visual-three">
+                    <span>ЗЕМЛЯ</span>
+                </div>
+                <div class="object-main">
+                    <div class="object-title-row">
+                        <div>
+                            <h3>
+                                с. Ново-Кусково, ул. Молодёжная, 24
+                            </h3>
+                            <div class="object-meta">
+                                <span class="source avito">Авито</span>
+                                <span>16 сентября 2026 г.</span>
+                            </div>
+                        </div>
+                        <span class="object-status">
+                            Новый
+                        </span>
+                    </div>
+                    <div class="object-tags">
+                        <span>12 соток</span>
+                        <span>ИЖС</span>
+                    </div>
+                    <p>
+                        Земельный участок в Асиновском районе.
+                        Подходит для строительства жилого дома.
+                    </p>
+                    <div class="object-footer">
+                        <div>
+                            <strong>511 000 ₽</strong>
+                            <span>42 583 ₽/сотка</span>
+                        </div>
+                        <button class="object-link" type="button">
+                            Подробнее
+                        </button>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</main>
+<div class="toast" id="toast">
+    <span>✓</span>
+    <strong id="toastText">
+        Готово
+    </strong>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

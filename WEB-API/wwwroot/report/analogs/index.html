@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LandScope — Подбор аналогов</title>
+
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="analogs.css">
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="header-inner">
+
+        <a href="../../index.html" class="brand">
+
+            <span class="brand-logo">
+                L
+            </span>
+
+            <span class="brand-copy">
+                <strong>LandScope</strong>
+                <small>Market intelligence</small>
+            </span>
+
+        </a>
+
+
+        <nav class="main-nav">
+
+            <a
+                href="../../index.html"
+                class="nav-link">
+                Земельные участки
+            </a>
+
+            <a
+                href="../quarterly/index.html"
+                class="nav-link"
+            >
+                Отчёты по рынку
+            </a>
+
+            <a
+                href="index.html"
+                class="nav-link active"
+            >
+                Подбор аналогов по заданной локации
+            </a>
+
+            <a href="#" class="nav-link disabled-link">
+                Жилая <span class="soon">скоро</span>
+            </a>
+
+            <a href="#" class="nav-link disabled-link">
+                Коммерческая <span class="soon">скоро</span>
+            </a>
+
+        </nav>
+
+
+        <div class="header-actions">
+
+            <button
+                class="header-icon"
+                id="themeButton"
+                type="button"
+                aria-label="Переключить тему"
+            >
+                ◐
+            </button>
+
+            <button
+                class="profile"
+                type="button">
+                <span class="profile-avatar">67</span>
+                <span class="profile-name">6767676 М.</span>
+                <span class="profile-arrow">
+                    ⌄
+                </span>
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<main class="analogs-page">
+
+    <!-- HERO -->
+
+    <section class="analogs-hero">
+
+        <div class="hero-background">
+            <span class="hero-orb hero-orb-one"></span>
+            <span class="hero-orb hero-orb-two"></span>
+            <span class="hero-grid"></span>
+        </div>
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Анализ рынка
+            </div>
+
+            <h1>
+                Подбор аналогов по заданной локации
+            </h1>
+
+            <p>
+                Найдите земельные участки, максимально похожие на интересующий
+                объект, и сравните их стоимость, площадь и характеристики.
+            </p>
+
+        </div>
+
+        <div class="hero-location-card">
+
+            <div class="location-icon">
+                ⌖
+            </div>
+
+            <div>
+                <span class="location-label">Текущая локация</span>
+                <strong id="heroLocation">Томский район</strong>
+            </div>
+
+        </div>
+
+    </section>
+    <section class="search-builder">
+
+        <div class="section-heading">
+            <div>
+                <span class="section-kicker">ПАРАМЕТРЫ ПОИСКА</span>
+                <h2>Настройте выборку аналогов</h2>
+                <p>
+                    Укажите расположение и характеристики объекта,
+                    чтобы система сформировала подходящую выборку.
+                </p>
+            </div>
+
+            <div class="matching-badge">
+                <span>●</span>
+                Автоматический подбор
+            </div>
+        </div>
+
+<div class="form-grid">
+
+    <div class="field">
+        <label for="regionInput">Регион</label>
+        <div class="input-wrap">
+            <span class="input-icon">⌖</span>
+            <input
+                type="text"
+                id="regionInput"
+                value="Томская область"
+                placeholder="Введите регион"
+            >
+        </div>
+    </div>
+
+    <div class="field field-location">
+        <label for="districtInput">Район</label>
+        <div class="input-wrap">
+            <span class="input-icon">⌖</span>
+            <input
+                type="text"
+                id="districtInput"
+                value="Томский район"
+                placeholder="Введите район"
+            >
+        </div>
+    </div>
+
+    <div class="field">
+        <label for="areaFrom">Площадь, сотки</label>
+        <div class="range-inputs">
+            <input type="number" id="areaFrom" placeholder="От">
+            <span>—</span>
+            <input type="number" id="areaTo" placeholder="До">
+        </div>
+    </div>
+
+    <div class="field">
+        <label for="priceFrom">Цена за сотку, ₽</label>
+        <div class="range-inputs">
+            <input type="number" id="priceFrom" placeholder="От">
+            <span>—</span>
+            <input type="number" id="priceTo" placeholder="До">
+        </div>
+    </div>
+
+    <div class="field">
+        <label for="categoryFilter">Категория</label>
+        <select id="categoryFilter">
+            <option value="">Все категории</option>
+            <option value="Земли населённых пунктов">Земли населённых пунктов</option>
+            <option value="Земли сельхозназначения">Земли сельхозназначения</option>
+            <option value="Земли промышленности">Земли промышленности</option>
+        </select>
+    </div>
+
+    <div class="field">
+        <label for="vriFilter">ВРИ</label>
+        <select id="vriFilter">
+            <option value="">Все виды</option>
+            <option value="ИЖС">ИЖС</option>
+            <option value="ЛПХ">ЛПХ</option>
+            <option value="Сельскохозяйственное использование">Сельскохозяйственное использование</option>
+            <option value="Промышленное использование">Промышленное использование</option>
+        </select>
+    </div>
+
+</div>
+
+        <div class="quick-filters">
+
+            <span class="quick-title">
+                Быстрый выбор:
+            </span>
+
+            <button
+                type="button"
+                class="quick-filter"
+                data-area-from="0"
+                data-area-to="20"
+            >
+                До 20 соток
+            </button>
+
+            <button
+                type="button"
+                class="quick-filter"
+                data-area-from="20"
+                data-area-to="50"
+            >
+                20–50 соток
+            </button>
+
+            <button
+                type="button"
+                class="quick-filter"
+                data-area-from="50"
+                data-area-to="100"
+            >
+                50–100 соток
+            </button>
+
+            <button
+                type="button"
+                class="quick-filter"
+                data-area-from="100"
+                data-area-to=""
+            >
+                Более 100 соток
+            </button>
+
+        </div>
+
+
+        <div class="search-actions">
+
+            <button
+                type="button"
+                id="findAnalogs"
+                class="primary-search-button"
+            >
+                <span class="search-button-icon">⌕</span>
+                Найти аналоги
+            </button>
+
+            <button
+                type="button"
+                id="resetFilters"
+                class="secondary-button"
+            >
+                Сбросить
+            </button>
+
+        </div>
+
+    </section>
+
+
+  <section class="summary-head">
+
+        <div>
+            <span class="filter-label">РЕЗУЛЬТАТЫ ВЫБОРКИ</span>
+            <h2>Сводка по найденному</h2>
+        </div>
+
+        <div class="found">
+            Найдено:
+            <strong id="foundCount">2142</strong>
+            объявления
+        </div>
+
+    </section>
+
+    <section class="stats-grid">
+
+        <article class="stat-card">
+            <span>Найдено объектов</span>
+            <strong>2142</strong>
+            <small>в текущей выборке</small>
+        </article>
+
+        <article class="stat-card">
+            <span>Минимальная цена за сотку</span>
+            <strong>14 067 ₽</strong>
+            <small>по найденным объектам</small>
+        </article>
+
+        <article class="stat-card">
+            <span>Максимальная цена за сотку</span>
+            <strong>233 689 ₽</strong>
+            <small>по найденным объектам</small>
+        </article>
+
+        <article class="stat-card accent">
+            <span>Средняя цена за сотку</span>
+            <strong>53 467 ₽</strong>
+            <small>медиана — 37 500 ₽</small>
+        </article>
+
+    </section>
+
+    <section class="segments">
+
+        <div class="section-title">
+
+            <div>
+                <span class="filter-label">СЕГМЕНТАЦИЯ</span>
+                <h2>По площади участка</h2>
+            </div>
+
+        </div>
+
+        <div class="segment-grid">
+
+            <article class="segment-card">
+
+                <div class="segment-top">
+                    <span>01</span>
+                    <b>1 286 объектов</b>
+                </div>
+
+                <h3>До 30 соток</h3>
+
+                <div class="segment-price">
+                    <strong>52 928 ₽</strong>
+                    <span>средняя за сотку</span>
+                </div>
+
+                <div class="segment-bottom">
+                    <span>Медиана</span>
+                    <strong>37 000 ₽</strong>
+                </div>
+
+            </article>
+
+            <article class="segment-card">
+
+                <div class="segment-top">
+                    <span>02</span>
+                    <b>463 объекта</b>
+                </div>
+
+                <h3>От 30 до 50 соток</h3>
+
+                <div class="segment-price">
+                    <strong>55 887 ₽</strong>
+                    <span>средняя за сотку</span>
+                </div>
+
+                <div class="segment-bottom">
+                    <span>Медиана</span>
+                    <strong>38 320 ₽</strong>
+                </div>
+
+            </article>
+
+            <article class="segment-card">
+
+                <div class="segment-top">
+                    <span>03</span>
+                    <b>393 объекта</b>
+                </div>
+
+                <h3>Свыше 50 соток</h3>
+
+                <div class="segment-price">
+                    <strong>52 380 ₽</strong>
+                    <span>средняя за сотку</span>
+                </div>
+
+                <div class="segment-bottom">
+                    <span>Медиана</span>
+                    <strong>37 467 ₽</strong>
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+        <div class="list-toolbar">
+
+            <div class="toolbar-result">
+                <span class="toolbar-dot"></span>
+                Найденные объекты
+            </div>
+
+            <div class="toolbar-count">
+                Показано
+                <strong id="paginationFrom">0</strong>–<strong id="paginationTo">0</strong>
+                из
+                <strong id="paginationTotal">0</strong>
+            </div>
+
+        </div>
+
+
+        <div id="analogsList" class="analogs-list"></div>
+
+
+        <div id="pagination" class="pagination"></div>
+
+    </section>
+
+</main>
+
+
+<div id="toast" class="toast">
+    <div class="toast-icon">✓</div>
+
+    <div>
+        <strong>Готово</strong>
+        <p id="toastText"></p>
+    </div>
+</div>
+
+
+<script src="../../script.js"></script>
+<script src="analogs.js"></script>
+
+</body>
+</html>
