@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Объявления о земельных участках</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+
+        .filters {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 6px 8px;
+            font-size: 14px;
+        }
+
+        th {
+            background: #f3f3f3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Объявления</h1>
+
+    <div class="filters">
+        <select id="region"><option value="">Все регионы</option></select>
+        <input id="locality" placeholder="Населённый пункт">
+        <input id="priceFrom" type="number" placeholder="Цена от">
+        <input id="priceTo" type="number" placeholder="Цена до">
+        <label><input type="checkbox" id="hasGas"> Газ</label>
+        <label><input type="checkbox" id="hasElectricity"> Свет</label>
+        <label><input type="checkbox" id="hasWater"> Вода</label>
+        <button id="apply">Найти</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Дата</th>
+                <th>Регион</th>
+                <th>Населённый пункт</th>
+                <th>Площадь</th>
+                <th>Цена</th>
+                <th>Цена за ед.</th>
+                <th>Коммуникации</th>
+                <th>Кадастровый №</th>
+                <th>Источник</th>
+            </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+    </table>
+
+    <div style="margin-top:12px">
+        <button id="prev">←</button>
+        <span id="pageInfo"></span>
+        <button id="next">→</button>
+    </div>
+
+    <script>
+            let page = 1;
+            const pageSize = 50;
+            const $ = id => document.getElementById(id);
+            const fmt = n => n == null ? '—' : Number(n).toLocaleString('ru-RU');
+
+            async function loadRegions() {
+              const res = await fetch('/api/announcements/regions');
+              for (const r of await res.json()) {
+                const o = document.createElement('option');
+                o.value = o.textContent = r;
+                $('region').appendChild(o);
+              }
+            }
+
+            async function load() {
+              const q = new URLSearchParams({ page, pageSize });
+              const set = (k, v) => { if (v) q.set(k, v); };
+              set('region', $('region').value);
+              set('locality', $('locality').value.trim());
+              set('priceFrom', $('priceFrom').value);
+              set('priceTo', $('priceTo').value);
+              if ($('hasGas').checked) q.set('hasGas', 'true');
+              if ($('hasElectricity').checked) q.set('hasElectricity', 'true');
+              if ($('hasWater').checked) q.set('hasWater', 'true');
+
+              try {
+                const res = await fetch('/api/announcements?' + q);
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const data = await res.json();
+                render(data);
+              } catch (e) {
+                console.error('Ошибка загрузки:', e);
+              }
+            }
+
+            function render(data) {
+              const tbody = $('rows');
+              tbody.innerHTML = '';
+              for (const a of data.items) {
+                const tr = document.createElement('tr');
+                const comm = [a.hasGas && 'газ', a.hasElectricity && 'свет', a.hasWater && 'вода', a.hasHouse && 'дом']
+                  .filter(Boolean).join(', ') || '—';
+
+                const cells = [
+                  a.datePublished, a.region ?? '—', a.locality ?? '—', fmt(a.area),
+                  fmt(a.price), fmt(a.pricePerUnit), comm, a.cadastralNumber ?? '—'
+                ];
+                for (const c of cells) {
+                  const td = document.createElement('td');
+                  td.textContent = c;        // textContent защищает от XSS
+                  tr.appendChild(td);
+                }
+
+                const tdSrc = document.createElement('td');
+                const link = document.createElement('a');
+                link.href = a.sourceUrl;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.textContent = a.source;
+                tdSrc.appendChild(link);
+                tr.appendChild(tdSrc);
+
+                tbody.appendChild(tr);
+              }
+              const pages = Math.max(1, Math.ceil(data.total / data.pageSize));
+              $('pageInfo').textContent = `Стр. ${data.page} из ${pages} (всего ${data.total})`;
+              $('prev').disabled = data.page <= 1;
+              $('next').disabled = data.page >= pages;
+            }
+
+            $('apply').onclick = () => { page = 1; load(); };
+            $('prev').onclick = () => { page--; load(); };
+            $('next').onclick = () => { page++; load(); };
+
+            loadRegions();
+            load();
+    </script>
+</body>
+</html>

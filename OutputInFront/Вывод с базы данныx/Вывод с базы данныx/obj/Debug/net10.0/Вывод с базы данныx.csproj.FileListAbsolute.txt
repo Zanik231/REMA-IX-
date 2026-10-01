@@ -1,0 +1,36 @@
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\bin\Debug\net10.0\appsettings.json
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\bin\Debug\net10.0\Вывод с базы данныx.staticwebassets.runtime.json
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\bin\Debug\net10.0\Вывод с базы данныx.staticwebassets.endpoints.json
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\bin\Debug\net10.0\Вывод с базы данныx.exe
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\bin\Debug\net10.0\Вывод с базы данныx.deps.json
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\bin\Debug\net10.0\Вывод с базы данныx.runtimeconfig.json
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\bin\Debug\net10.0\Вывод с базы данныx.dll
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\bin\Debug\net10.0\Вывод с базы данныx.pdb
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\bin\Debug\net10.0\Dapper.dll
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\bin\Debug\net10.0\Npgsql.dll
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\Вывод с базы данныx.csproj.AssemblyReference.cache
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\Вывод с базы данныx.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\Вывод с базы данныx.AssemblyInfoInputs.cache
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\Вывод с базы данныx.AssemblyInfo.cs
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\Вывод с базы данныx.csproj.CoreCompileInputs.cache
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\Вывод с базы данныx.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\scopedcss\bundle\Вывод с базы данныx.styles.css
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\compressed\eytx0b9c2v-{0}-61n19gt1b8-61n19gt1b8.gz
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\_____ _ .4C4F3DEC.Up2Date
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\Вывод с базы данныx.dll
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\refint\Вывод с базы данныx.dll
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\Вывод с базы данныx.pdb
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\Вывод с базы данныx.genruntimeconfig.cache
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\ref\Вывод с базы данныx.dll
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\obj\Debug\net10.0\compressed\socivu8uwd-{0}-e77zv8mgi3-e77zv8mgi3.gz

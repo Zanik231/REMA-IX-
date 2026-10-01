@@ -1,0 +1,4 @@
+wwwroot\favicon.ico
+wwwroot\Index.html
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\wwwroot\favicon.ico
+C:\Users\bagda\source\repos\Вывод с базы данныx\Вывод с базы данныx\wwwroot\Index.html
