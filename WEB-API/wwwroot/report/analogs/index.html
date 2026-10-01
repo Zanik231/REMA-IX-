@@ -17,18 +17,13 @@
     <div class="header-inner">
 
         <a href="../../index.html" class="brand">
-
-            <span class="brand-logo">
-                L
-            </span>
+            <span class="brand-logo">L</span>
 
             <span class="brand-copy">
                 <strong>LandScope</strong>
                 <small>Market intelligence</small>
             </span>
-
         </a>
-
 
         <nav class="main-nav">
 
@@ -40,15 +35,13 @@
 
             <a
                 href="../quarterly/index.html"
-                class="nav-link"
-            >
+                class="nav-link">
                 Отчёты по рынку
             </a>
 
             <a
                 href="index.html"
-                class="nav-link active"
-            >
+                class="nav-link active">
                 Подбор аналогов по заданной локации
             </a>
 
@@ -62,15 +55,13 @@
 
         </nav>
 
-
         <div class="header-actions">
 
             <button
                 class="header-icon"
                 id="themeButton"
                 type="button"
-                aria-label="Переключить тему"
-            >
+                aria-label="Переключить тему">
                 ◐
             </button>
 
@@ -79,9 +70,7 @@
                 type="button">
                 <span class="profile-avatar">67</span>
                 <span class="profile-name">6767676 М.</span>
-                <span class="profile-arrow">
-                    ⌄
-                </span>
+                <span class="profile-arrow">⌄</span>
             </button>
 
         </div>
@@ -91,10 +80,7 @@
 </header>
 
 
-
 <main class="analogs-page">
-
-    <!-- HERO -->
 
     <section class="analogs-hero">
 
@@ -129,19 +115,33 @@
             </div>
 
             <div>
-                <span class="location-label">Текущая локация</span>
-                <strong id="heroLocation">Томский район</strong>
+                <span class="location-label">
+                    Текущая локация
+                </span>
+
+                <strong id="heroLocation">
+                    Томский район
+                </strong>
             </div>
 
         </div>
 
     </section>
+
+
     <section class="search-builder">
 
         <div class="section-heading">
+
             <div>
-                <span class="section-kicker">ПАРАМЕТРЫ ПОИСКА</span>
-                <h2>Настройте выборку аналогов</h2>
+                <span class="section-kicker">
+                    ПАРАМЕТРЫ ПОИСКА
+                </span>
+
+                <h2>
+                    Настройте выборку аналогов
+                </h2>
+
                 <p>
                     Укажите расположение и характеристики объекта,
                     чтобы система сформировала подходящую выборку.
@@ -152,76 +152,171 @@
                 <span>●</span>
                 Автоматический подбор
             </div>
+
         </div>
 
-<div class="form-grid">
 
-    <div class="field">
-        <label for="regionInput">Регион</label>
-        <div class="input-wrap">
-            <span class="input-icon">⌖</span>
-            <input
-                type="text"
-                id="regionInput"
-                value="Томская область"
-                placeholder="Введите регион"
-            >
+        <div class="form-grid">
+
+            <div class="field">
+
+                <label for="regionInput">
+                    Регион
+                </label>
+
+                <div class="input-wrap">
+
+                    <span class="input-icon">
+                        ⌖
+                    </span>
+
+                    <input
+                        type="text"
+                        id="regionInput"
+                        value="Томская область"
+                        placeholder="Введите регион">
+
+                </div>
+
+            </div>
+
+
+            <div class="field field-location">
+
+                <label for="districtInput">
+                    Район
+                </label>
+
+                <div class="input-wrap">
+
+                    <span class="input-icon">
+                        ⌖
+                    </span>
+
+                    <input
+                        type="text"
+                        id="districtInput"
+                        value="Томский район"
+                        placeholder="Введите район">
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="areaFrom">
+                    Площадь, сотки
+                </label>
+
+                <div class="range-inputs">
+
+                    <input
+                        type="number"
+                        id="areaFrom"
+                        placeholder="От">
+
+                    <span>—</span>
+
+                    <input
+                        type="number"
+                        id="areaTo"
+                        placeholder="До">
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="priceFrom">
+                    Цена за сотку, ₽
+                </label>
+
+                <div class="range-inputs">
+
+                    <input
+                        type="number"
+                        id="priceFrom"
+                        placeholder="От">
+
+                    <span>—</span>
+
+                    <input
+                        type="number"
+                        id="priceTo"
+                        placeholder="До">
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="categoryFilter">
+                    Категория
+                </label>
+
+                <select id="categoryFilter">
+
+                    <option value="">
+                        Все категории
+                    </option>
+
+                    <option value="Земли населённых пунктов">
+                        Земли населённых пунктов
+                    </option>
+
+                    <option value="Земли сельхозназначения">
+                        Земли сельхозназначения
+                    </option>
+
+                    <option value="Земли промышленности">
+                        Земли промышленности
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="vriFilter">
+                    ВРИ
+                </label>
+
+                <select id="vriFilter">
+
+                    <option value="">
+                        Все виды
+                    </option>
+
+                    <option value="ИЖС">
+                        ИЖС
+                    </option>
+
+                    <option value="ЛПХ">
+                        ЛПХ
+                    </option>
+
+                    <option value="Сельскохозяйственное использование">
+                        Сельскохозяйственное использование
+                    </option>
+
+                    <option value="Промышленное использование">
+                        Промышленное использование
+                    </option>
+
+                </select>
+
+            </div>
+
         </div>
-    </div>
 
-    <div class="field field-location">
-        <label for="districtInput">Район</label>
-        <div class="input-wrap">
-            <span class="input-icon">⌖</span>
-            <input
-                type="text"
-                id="districtInput"
-                value="Томский район"
-                placeholder="Введите район"
-            >
-        </div>
-    </div>
-
-    <div class="field">
-        <label for="areaFrom">Площадь, сотки</label>
-        <div class="range-inputs">
-            <input type="number" id="areaFrom" placeholder="От">
-            <span>—</span>
-            <input type="number" id="areaTo" placeholder="До">
-        </div>
-    </div>
-
-    <div class="field">
-        <label for="priceFrom">Цена за сотку, ₽</label>
-        <div class="range-inputs">
-            <input type="number" id="priceFrom" placeholder="От">
-            <span>—</span>
-            <input type="number" id="priceTo" placeholder="До">
-        </div>
-    </div>
-
-    <div class="field">
-        <label for="categoryFilter">Категория</label>
-        <select id="categoryFilter">
-            <option value="">Все категории</option>
-            <option value="Земли населённых пунктов">Земли населённых пунктов</option>
-            <option value="Земли сельхозназначения">Земли сельхозназначения</option>
-            <option value="Земли промышленности">Земли промышленности</option>
-        </select>
-    </div>
-
-    <div class="field">
-        <label for="vriFilter">ВРИ</label>
-        <select id="vriFilter">
-            <option value="">Все виды</option>
-            <option value="ИЖС">ИЖС</option>
-            <option value="ЛПХ">ЛПХ</option>
-            <option value="Сельскохозяйственное использование">Сельскохозяйственное использование</option>
-            <option value="Промышленное использование">Промышленное использование</option>
-        </select>
-    </div>
-
-</div>
 
         <div class="quick-filters">
 
@@ -233,8 +328,7 @@
                 type="button"
                 class="quick-filter"
                 data-area-from="0"
-                data-area-to="20"
-            >
+                data-area-to="20">
                 До 20 соток
             </button>
 
@@ -242,8 +336,7 @@
                 type="button"
                 class="quick-filter"
                 data-area-from="20"
-                data-area-to="50"
-            >
+                data-area-to="50">
                 20–50 соток
             </button>
 
@@ -251,8 +344,7 @@
                 type="button"
                 class="quick-filter"
                 data-area-from="50"
-                data-area-to="100"
-            >
+                data-area-to="100">
                 50–100 соток
             </button>
 
@@ -260,8 +352,7 @@
                 type="button"
                 class="quick-filter"
                 data-area-from="100"
-                data-area-to=""
-            >
+                data-area-to="">
                 Более 100 соток
             </button>
 
@@ -273,18 +364,23 @@
             <button
                 type="button"
                 id="findAnalogs"
-                class="primary-search-button"
-            >
-                <span class="search-button-icon">⌕</span>
+                class="primary-search-button">
+
+                <span class="search-button-icon">
+                    ⌕
+                </span>
+
                 Найти аналоги
+
             </button>
 
             <button
                 type="button"
                 id="resetFilters"
-                class="secondary-button"
-            >
+                class="secondary-button">
+
                 Сбросить
+
             </button>
 
         </div>
@@ -292,121 +388,273 @@
     </section>
 
 
-  <section class="summary-head">
+    <section class="summary-head">
 
         <div>
-            <span class="filter-label">РЕЗУЛЬТАТЫ ВЫБОРКИ</span>
-            <h2>Сводка по найденному</h2>
+
+            <span class="filter-label">
+                РЕЗУЛЬТАТЫ ВЫБОРКИ
+            </span>
+
+            <h2>
+                Сводка по найденному
+            </h2>
+
         </div>
 
         <div class="found">
+
             Найдено:
-            <strong id="foundCount">2142</strong>
+            <strong id="foundCount">
+                2142
+            </strong>
             объявления
+
         </div>
 
     </section>
+
 
     <section class="stats-grid">
 
         <article class="stat-card">
-            <span>Найдено объектов</span>
-            <strong>2142</strong>
-            <small>в текущей выборке</small>
+
+            <span>
+                Найдено объектов
+            </span>
+
+            <strong>
+                2142
+            </strong>
+
+            <small>
+                в текущей выборке
+            </small>
+
         </article>
+
 
         <article class="stat-card">
-            <span>Минимальная цена за сотку</span>
-            <strong>14 067 ₽</strong>
-            <small>по найденным объектам</small>
+
+            <span>
+                Минимальная цена за сотку
+            </span>
+
+            <strong>
+                14 067 ₽
+            </strong>
+
+            <small>
+                по найденным объектам
+            </small>
+
         </article>
+
 
         <article class="stat-card">
-            <span>Максимальная цена за сотку</span>
-            <strong>233 689 ₽</strong>
-            <small>по найденным объектам</small>
+
+            <span>
+                Максимальная цена за сотку
+            </span>
+
+            <strong>
+                233 689 ₽
+            </strong>
+
+            <small>
+                по найденным объектам
+            </small>
+
         </article>
 
-        <article class="stat-card accent">
-            <span>Средняя цена за сотку</span>
-            <strong>53 467 ₽</strong>
-            <small>медиана — 37 500 ₽</small>
+
+        <article class="stat-card median-stat">
+
+            <div class="median-label">
+
+                <span class="median-pulse"></span>
+
+                КЛЮЧЕВОЙ ПОКАЗАТЕЛЬ
+
+            </div>
+
+            <span>
+                Медианная цена за сотку
+            </span>
+
+            <strong>
+                37 500 ₽
+            </strong>
+
+            <small>
+                50% объектов дешевле · 50% дороже
+            </small>
+
         </article>
 
     </section>
+
 
     <section class="segments">
 
         <div class="section-title">
 
             <div>
-                <span class="filter-label">СЕГМЕНТАЦИЯ</span>
-                <h2>По площади участка</h2>
+
+                <span class="filter-label">
+                    СЕГМЕНТАЦИЯ РЫНКА
+                </span>
+
+                <h2>
+                    Распределение по площади участка
+                </h2>
+
             </div>
 
         </div>
+
 
         <div class="segment-grid">
 
             <article class="segment-card">
 
                 <div class="segment-top">
-                    <span>01</span>
-                    <b>1 286 объектов</b>
+
+                    <span>
+                        01
+                    </span>
+
+                    <b>
+                        1 286 объектов
+                    </b>
+
                 </div>
 
-                <h3>До 30 соток</h3>
+
+                <h3>
+                    До 30 соток
+                </h3>
+
 
                 <div class="segment-price">
-                    <strong>52 928 ₽</strong>
-                    <span>средняя за сотку</span>
+
+                    <strong>
+                        52 928 ₽
+                    </strong>
+
+                    <span>
+                        средняя цена за сотку
+                    </span>
+
                 </div>
 
+
                 <div class="segment-bottom">
-                    <span>Медиана</span>
-                    <strong>37 000 ₽</strong>
+
+                    <span>
+                        Медиана
+                    </span>
+
+                    <strong>
+                        37 000 ₽
+                    </strong>
+
                 </div>
 
             </article>
 
+
             <article class="segment-card">
 
                 <div class="segment-top">
-                    <span>02</span>
-                    <b>463 объекта</b>
+
+                    <span>
+                        02
+                    </span>
+
+                    <b>
+                        463 объекта
+                    </b>
+
                 </div>
 
-                <h3>От 30 до 50 соток</h3>
+
+                <h3>
+                    От 30 до 50 соток
+                </h3>
+
 
                 <div class="segment-price">
-                    <strong>55 887 ₽</strong>
-                    <span>средняя за сотку</span>
+
+                    <strong>
+                        55 887 ₽
+                    </strong>
+
+                    <span>
+                        средняя цена за сотку
+                    </span>
+
                 </div>
 
+
                 <div class="segment-bottom">
-                    <span>Медиана</span>
-                    <strong>38 320 ₽</strong>
+
+                    <span>
+                        Медиана
+                    </span>
+
+                    <strong>
+                        38 320 ₽
+                    </strong>
+
                 </div>
 
             </article>
 
+
             <article class="segment-card">
 
                 <div class="segment-top">
-                    <span>03</span>
-                    <b>393 объекта</b>
+
+                    <span>
+                        03
+                    </span>
+
+                    <b>
+                        393 объекта
+                    </b>
+
                 </div>
 
-                <h3>Свыше 50 соток</h3>
+
+                <h3>
+                    Свыше 50 соток
+                </h3>
+
 
                 <div class="segment-price">
-                    <strong>52 380 ₽</strong>
-                    <span>средняя за сотку</span>
+
+                    <strong>
+                        52 380 ₽
+                    </strong>
+
+                    <span>
+                        средняя цена за сотку
+                    </span>
+
                 </div>
 
+
                 <div class="segment-bottom">
-                    <span>Медиана</span>
-                    <strong>37 467 ₽</strong>
+
+                    <span>
+                        Медиана
+                    </span>
+
+                    <strong>
+                        37 467 ₽
+                    </strong>
+
                 </div>
 
             </article>
@@ -416,40 +664,78 @@
     </section>
 
 
+    <section class="results-section">
+
         <div class="list-toolbar">
 
             <div class="toolbar-result">
+
                 <span class="toolbar-dot"></span>
+
                 Найденные объекты
+
             </div>
 
+
             <div class="toolbar-count">
+
                 Показано
-                <strong id="paginationFrom">0</strong>–<strong id="paginationTo">0</strong>
+
+                <strong id="paginationFrom">
+                    0
+                </strong>
+
+                –
+
+                <strong id="paginationTo">
+                    0
+                </strong>
+
                 из
-                <strong id="paginationTotal">0</strong>
+
+                <strong id="paginationTotal">
+                    0
+                </strong>
+
             </div>
 
         </div>
 
 
-        <div id="analogsList" class="analogs-list"></div>
+        <div
+            id="analogsList"
+            class="analogs-list">
+        </div>
 
 
-        <div id="pagination" class="pagination"></div>
+        <div
+            id="pagination"
+            class="pagination">
+        </div>
 
     </section>
 
 </main>
 
 
-<div id="toast" class="toast">
-    <div class="toast-icon">✓</div>
+<div
+    id="toast"
+    class="toast">
+
+    <div class="toast-icon">
+        ✓
+    </div>
 
     <div>
-        <strong>Готово</strong>
+
+        <strong>
+            Готово
+        </strong>
+
         <p id="toastText"></p>
+
     </div>
+
 </div>
 
 
