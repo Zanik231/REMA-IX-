@@ -902,6 +902,200 @@
     line-height: 1.5;
 }
 
+.toast.is-error .toast-icon {
+    color: var(--red);
+    background: var(--red-bg);
+}
+
+
+/* =========================================================
+РЕЗУЛЬТАТЫ ИЗ API
+========================================================= */
+
+.analogs-block {
+    transition: opacity .2s ease;
+}
+
+.analogs-block.is-loading {
+    opacity: .45;
+    pointer-events: none;
+}
+
+.primary-search-button:disabled {
+    cursor: wait;
+    opacity: .75;
+    transform: none;
+    box-shadow: none;
+}
+
+.results-note {
+    margin: 0 0 17px;
+    padding: 14px 18px;
+    border: 1px solid #f5dfb8;
+    border-radius: 14px;
+    color: var(--orange);
+    background: var(--orange-bg);
+    font-size: 14px;
+    line-height: 1.55;
+    font-weight: 650;
+}
+
+.results-note[hidden] {
+    display: none;
+}
+
+.segment-card.is-empty .segment-price strong,
+.segment-card.is-empty .segment-bottom strong {
+    color: var(--text-light);
+}
+
+.results-section {
+    scroll-margin-top: 104px;
+}
+
+.results-section .list-toolbar {
+    margin-top: 0;
+    gap: 16px;
+}
+
+.toolbar-side {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 18px;
+}
+
+.toolbar-sort {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.toolbar-sort span {
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 750;
+}
+
+.toolbar-sort select {
+    height: 38px;
+    padding: 0 32px 0 12px;
+    border: 1px solid #dce3ed;
+    border-radius: 10px;
+    outline: none;
+    color: var(--text-dark);
+    background-color: white;
+    background-image:
+        linear-gradient(45deg, transparent 50%, #98a2b3 50%),
+        linear-gradient(135deg, #98a2b3 50%, transparent 50%);
+    background-position:
+        calc(100% - 17px) 16px,
+        calc(100% - 12px) 16px;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 750;
+    cursor: pointer;
+    appearance: none;
+}
+
+.toolbar-sort select:focus {
+    border-color: #9bbcff;
+    box-shadow: 0 0 0 4px rgba(21,94,239,.08);
+}
+
+.analog-date {
+    padding: 8px 11px;
+    border: 1px solid #dfe7f4;
+    border-radius: 10px;
+    color: var(--text-muted);
+    background: #f7f9fc;
+    font-size: 12px;
+    font-weight: 850;
+    white-space: nowrap;
+}
+
+.analog-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 14px;
+}
+
+.analog-tags span {
+    padding: 6px 10px;
+    border: 1px solid #d5f0df;
+    border-radius: 8px;
+    color: #15803d;
+    background: #eaf8ef;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.median-deviation {
+    display: block;
+    margin-top: 5px;
+    color: var(--text-light);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.median-deviation.below {
+    color: #15803d;
+}
+
+.median-deviation.above {
+    color: var(--orange);
+}
+
+/* В style.css .source — inline-flex-бейдж, из-за него пропадает пробел после «Источник:» */
+.analog-footer .source {
+    display: inline;
+    padding: 0;
+}
+
+a.details-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+}
+
+a.details-button span {
+    transition: transform .2s ease;
+}
+
+a.details-button:hover span {
+    transform: translateX(3px);
+}
+
+.page-ellipsis {
+    min-width: 24px;
+    color: var(--text-light);
+    font-size: 14px;
+    font-weight: 800;
+    text-align: center;
+}
+
+@media (max-width: 1100px) {
+    .analogs-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 950px) {
+    .list-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toolbar-side {
+        justify-content: flex-start;
+    }
+}
+
 
 body.dark .search-builder,
 body.dark .metric-card,

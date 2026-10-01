@@ -1,0 +1,222 @@
+/* =========================================================
+QUARTERLY REPORT — состояния и динамический график
+========================================================= */
+
+.report-section {
+transition: opacity .2s ease;
+}
+
+.report-section.is-loading {
+opacity: .45;
+pointer-events: none;
+}
+
+.generate-button:disabled,
+.export-button:disabled {
+cursor: wait;
+opacity: .75;
+}
+
+/* KPI */
+
+.kpi-card > strong.red-value {
+color: var(--red);
+}
+
+.kpi-card > strong.compact-value {
+font-size: 32px;
+letter-spacing: -1px;
+}
+
+/* TABLES */
+
+.data-table tbody tr {
+cursor: pointer;
+}
+
+.data-table tbody tr.selected-row td {
+background: var(--blue-pale);
+}
+
+.data-table tr.table-empty {
+cursor: default;
+}
+
+.data-table tr.table-empty td {
+padding: 42px 25px;
+color: var(--text-light);
+text-align: center;
+white-space: normal;
+}
+
+.change.flat {
+color: var(--text-muted);
+background: #f2f4f7;
+}
+
+/* SEGMENTS */
+
+.report-section .segment-bottom strong.down {
+color: var(--red);
+}
+
+.report-section .segment-bottom strong.neutral {
+color: var(--text-light);
+}
+
+.segment-card.is-empty > strong {
+color: var(--text-light);
+}
+
+.history-sector-card.is-empty strong {
+color: var(--text-light);
+}
+
+.history-sector-empty {
+grid-column: 1 / -1;
+padding: 34px 20px;
+border: 1px dashed #ccd7e6;
+border-radius: 17px;
+color: var(--text-light);
+font-size: 15px;
+font-weight: 650;
+text-align: center;
+}
+
+/* CHART: ось Y и сетка выровнены по области SVG (14px сверху, 40px подписи снизу) */
+
+.dynamics-section .chart-values {
+position: relative;
+width: 64px;
+padding: 0;
+}
+
+.dynamics-section .chart-values span {
+position: absolute;
+right: 0;
+transform: translateY(-50%);
+white-space: nowrap;
+}
+
+.dynamics-section .grid-1 { top: 14px; }
+.dynamics-section .grid-2 { top: calc(14px + (100% - 54px) * .25); }
+.dynamics-section .grid-3 { top: calc(14px + (100% - 54px) * .5); }
+.dynamics-section .grid-4 { top: calc(14px + (100% - 54px) * .75); }
+.dynamics-section .grid-5 { top: calc(100% - 40px); bottom: auto; }
+
+.dynamics-section .chart-svg {
+top: 14px;
+height: calc(100% - 54px);
+}
+
+.dynamics-section .previous-line,
+.dynamics-section .current-line {
+vector-effect: non-scaling-stroke;
+stroke-linecap: round;
+stroke-linejoin: round;
+}
+
+.chart-dots {
+position: absolute;
+left: 0;
+right: 0;
+top: 14px;
+height: calc(100% - 54px);
+pointer-events: none;
+}
+
+.chart-dot {
+position: absolute;
+width: 10px;
+height: 10px;
+border: 3px solid var(--blue);
+border-radius: 50%;
+background: #fff;
+transform: translate(-50%, -50%);
+transition: width .15s ease, height .15s ease;
+}
+
+.chart-dot.previous {
+width: 8px;
+height: 8px;
+border-width: 2px;
+border-color: #cbd5e1;
+}
+
+.chart-dot.active {
+width: 16px;
+height: 16px;
+border-width: 4px;
+}
+
+.dynamics-section .chart-tooltip {
+right: auto;
+z-index: 2;
+pointer-events: none;
+white-space: nowrap;
+}
+
+.dynamics-section .chart-tooltip[hidden] {
+display: none;
+}
+
+.dynamics-section .chart-tooltip b.down {
+color: var(--red);
+}
+
+.dynamics-section .chart-tooltip b.neutral {
+color: var(--text-light);
+}
+
+.dynamics-section .chart-months {
+height: 20px;
+}
+
+.dynamics-section .chart-months span {
+position: absolute;
+top: 0;
+transform: translateX(-50%);
+white-space: nowrap;
+}
+
+.dynamics-section .chart-months span.first {
+transform: none;
+}
+
+.dynamics-section .chart-months span.last {
+transform: translateX(-100%);
+}
+
+.chart-empty {
+position: absolute;
+inset: 14px 0 40px;
+display: none;
+place-items: center;
+color: var(--text-light);
+font-size: 15px;
+font-weight: 650;
+}
+
+.chart-area.is-empty .chart-empty {
+display: grid;
+}
+
+/* TOAST */
+
+.toast-icon {
+width: 34px;
+height: 34px;
+flex: 0 0 34px;
+display: grid;
+place-items: center;
+border-radius: 50%;
+color: var(--green);
+background: var(--green-bg);
+font-size: 17px;
+font-weight: 900;
+}
+
+.toast.is-error .toast-icon {
+color: var(--red);
+background: var(--red-bg);
+}

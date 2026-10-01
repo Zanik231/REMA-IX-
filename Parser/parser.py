@@ -4,7 +4,7 @@ import json
 import re
 import time
 from datetime import datetime
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit, urlunsplit
 
 from bs4 import BeautifulSoup
 from curl_cffi import requests as cureq
@@ -37,12 +37,37 @@ SLEEP_BETWEEN_AVITO = 1.2
 
 CIAN_REGION = 5016   # Томская область
 
+# ─── Флаги разовой чистки (поставьте False после первого запуска) ───
+CLEAN_DUPLICATES_ON_START = True    # убрать уже существующие дубли
+REMOVE_DEAD_LINKS         = False   # ⚠️ медленно: 1 HTTP-запрос на URL
+DEAD_LINK_CHECK_LIMIT     = 300     # сколько проверять за раз (если включено)
+
 MONTHS_MAP = {
     "января": "01", "февраля": "02", "марта": "03",
     "апреля": "04", "мая": "05", "июня": "06",
     "июля": "07", "августа": "08", "сентября": "09",
     "октября": "10", "ноября": "11", "декабря": "12",
 }
+
+# ──────────────────────── URL-УТИЛИТЫ (NEW) ────────────────────────
+
+
+def normalize_url(url):
+    """
+    Убирает трекинг-параметры (?context=..., ?utm_...) из URL.
+    Нужно для дедупликации Avito, у которого context меняется
+    при каждом запросе.
+
+    ВАЖНО: URL ru09 не трогаем — там query-параметры это и есть ID
+    объявления (?subaction=detail&id=5212998).
+    """
+    if not url:
+        return url
+    if "tomsk.ru09.ru" in url:
+        return url
+    parts = urlsplit(url)
+    return urlunsplit((parts.scheme, parts.netloc, parts.path, "", ""))
+
 
 # ──────────────────────── ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ────────────────────────
 
@@ -158,7 +183,7 @@ def worker_ru09(max_pages=PAGES_RU09):
         for a in soup.find_all("a", href=True):
             if "subaction=detail" not in a["href"] or "id=" not in a["href"]:
                 continue
-            card_url = urljoin(base_url, a["href"])
+            card_url = normalize_url(urljoin(base_url, a["href"]))
             parent = a.find_parent("tr") or a.find_parent("div")
             raw_text = parent.get_text(separator=" ", strip=True) if parent else ""
             low_t = raw_text.lower()
@@ -255,8 +280,9 @@ def _build_cian_row_from_html(card, now_str):
     if not link:
         return None
 
-    href = link["href"].split("?")[0]
+    href = link["href"]
     c_url = href if href.startswith("http") else f"https://tomsk.cian.ru{href}"
+    c_url = normalize_url(c_url)   # ← убираем ?context=...
 
     c_text = sanitize_text(card.get_text(separator=" ", strip=True))
 
@@ -367,6 +393,7 @@ def _build_avito_row(card, now_str):
         return None
     href = link_el.get("href")
     c_url = f"https://www.avito.ru{href}" if href.startswith("/") else href
+    c_url = normalize_url(c_url)   # ← убираем ?context=...
     title = sanitize_text(link_el.get_text(strip=True))
 
     price = None
@@ -428,13 +455,133 @@ def _fetch_with_retry(session, url, headers):
     return None
 
 
+# ─────────────── ЧИСТКА БД: дубли и мёртвые ссылки (NEW) ───────────────
+
+
+def clean_existing_duplicates(conn):
+    """
+    1. Удаляет строки, у которых нормализованный URL (без ?...) уже есть
+       в другой строке — оставляет самую старую (min id).
+    2. Нормализует все оставшиеся URL: убирает ?context=... и т.п.
+       (кроме ru09 — там query-параметры это ID).
+
+    Возвращает (сколько_удалено, сколько_нормализовано).
+    """
+    with conn.cursor() as cur:
+        # 1. Сначала посмотрим сколько дублей
+        cur.execute("""
+            SELECT COUNT(*) FROM (
+                SELECT split_part(source_url, '?', 1) AS norm_url, COUNT(*) AS cnt
+                FROM land_plots_report
+                WHERE source != 'tomsk.ru09'
+                GROUP BY split_part(source_url, '?', 1)
+                HAVING COUNT(*) > 1
+            ) t;
+        """)
+        dup_groups = cur.fetchone()[0]
+
+        if dup_groups == 0:
+            print("[Чистка] Существующих дублей не найдено.")
+        else:
+            print(f"[Чистка] Найдено {dup_groups} групп дублей. Удаляю...")
+            # Удаляем дубли, оставляя строку с минимальным id в каждой группе
+            cur.execute("""
+                DELETE FROM land_plots_report a
+                USING land_plots_report b
+                WHERE a.id > b.id
+                  AND split_part(a.source_url, '?', 1) = split_part(b.source_url, '?', 1)
+                  AND a.source != 'tomsk.ru09'
+                  AND b.source != 'tomsk.ru09';
+            """)
+            deleted = cur.rowcount
+            print(f"[Чистка] Удалено дублей: {deleted}")
+
+        # 2. Нормализуем оставшиеся URL (убираем query-параметры)
+        cur.execute("""
+            UPDATE land_plots_report
+            SET source_url = split_part(source_url, '?', 1)
+            WHERE source_url LIKE '%?%'
+              AND source != 'tomsk.ru09';
+        """)
+        normalized = cur.rowcount
+        if normalized:
+            print(f"[Чистка] Нормализовано URL: {normalized}")
+
+    conn.commit()
+
+
+def validate_url_is_alive(url, session):
+    """HEAD-запрос: живая ли ссылка. True = живая, False = мёртвая."""
+    try:
+        r = session.head(url, timeout=8, allow_redirects=True)
+        return r.status_code not in (404, 410, 451)
+    except Exception:
+        # при ошибке сети считаем ссылку живой, чтобы не удалять зря
+        return True
+
+
+def remove_dead_links(conn, limit=DEAD_LINK_CHECK_LIMIT):
+    """
+    Проходит по ссылкам в БД, проверяет HEAD-запросом.
+    Удаляет те, что отдают 404 / 410 / 451.
+    """
+    with conn.cursor() as cur:
+        cur.execute("""
+            SELECT id, source, source_url
+            FROM land_plots_report
+            ORDER BY parsed_at DESC
+            LIMIT %s;
+        """, (limit,))
+        candidates = cur.fetchall()
+
+    if not candidates:
+        print("[Ссылки] Нечего проверять.")
+        return
+
+    session = requests.Session()
+    session.headers["User-Agent"] = (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/120.0.0.0 Safari/537.36"
+    )
+
+    dead_ids = []
+    print(f"[Ссылки] Проверяю {len(candidates)} URL...")
+    for i, (id_, source, url) in enumerate(candidates, 1):
+        if not validate_url_is_alive(url, session):
+            dead_ids.append(id_)
+            print(f"  [мёртвая] {url}")
+        if i % 25 == 0:
+            print(f"  ... проверено {i}/{len(candidates)}")
+
+    if dead_ids:
+        with conn.cursor() as cur:
+            cur.execute(
+                "DELETE FROM land_plots_report WHERE id = ANY(%s);",
+                (dead_ids,),
+            )
+        conn.commit()
+        print(f"[Ссылки] Удалено мёртвых: {len(dead_ids)}")
+    else:
+        print("[Ссылки] Мёртвых ссылок не найдено.")
+
+
 # ──────────────────────── СОХРАНЕНИЕ В БД ────────────────────────
 
 
 def dedupe_rows(rows):
+    """
+    Убирает дубликаты по нормализованному URL внутри одного запуска.
+    Также нормализует сам URL в строке.
+    """
     seen = {}
     for row in rows:
-        seen[row[1]] = row
+        url = normalize_url(row[1])
+        if not url:
+            continue
+        new_row = list(row)
+        new_row[1] = url
+        seen[url] = tuple(new_row)
     return list(seen.values())
 
 
@@ -508,6 +655,22 @@ def main():
     print("ПАРАЛЛЕЛЬНЫЙ СБОР (tomsk.ru09 + CIAN + Avito)")
     print("=" * 60)
 
+    # ─── Разовая чистка БД ───
+    if CLEAN_DUPLICATES_ON_START or REMOVE_DEAD_LINKS:
+        print("\n[Этап] Подключение к БД для чистки...")
+        conn = psycopg2.connect(**DB_CONFIG)
+        try:
+            if CLEAN_DUPLICATES_ON_START:
+                clean_existing_duplicates(conn)
+            if REMOVE_DEAD_LINKS:
+                remove_dead_links(conn)
+        except Exception as e:
+            print(f"[Чистка] Ошибка: {e}")
+        finally:
+            conn.close()
+        print()
+
+    # ─── Сбор данных ───
     all_results = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as ex:
         futures = {

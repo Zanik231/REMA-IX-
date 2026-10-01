@@ -10,6 +10,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="quarterly.css">
 </head>
 <body>
 
@@ -78,17 +79,17 @@
 
             <div class="database-top">
                 <span class="database-dot"></span>
-                ДАННЫЕ АКТУАЛЬНЫ
+                <span id="databaseStatus">ПОДКЛЮЧЕНИЕ…</span>
             </div>
-            <strong>2 142</strong>
-            <span>
-                объявления в базе
+            <strong id="databaseTotal">—</strong>
+            <span id="databaseCaption">
+                объявлений в базе
             </span>
             <div class="database-line">
                 <i></i>
             </div>
-            <small>
-                Последнее обновление · сегодня
+            <small id="databaseUpdated">
+                Загрузка данных…
             </small>
         </div>
     </section>
@@ -125,8 +126,7 @@
                     </span>
                     <input
                         type="date"
-                        id="startDate"
-                        value="2026-01-01">
+                        id="startDate">
                 </div>
             </label>
             <label class="form-field">
@@ -139,8 +139,7 @@
                     </span>
                     <input
                         type="date"
-                        id="endDate"
-                        value="2026-09-18">
+                        id="endDate">
                 </div>
             </label>
             <label class="form-field">
@@ -149,10 +148,10 @@
                 </span>
                 <div class="select-wrap">
                     <select id="interval">
-                        <option value="months">
+                        <option value="По месяцам">
                             По месяцам
                         </option>
-                        <option value="quarters" selected>
+                        <option value="По кварталам" selected>
                             По кварталам
                         </option>
                     </select>
@@ -163,15 +162,19 @@
                     Регион
                 </span>
                 <div class="select-wrap">
+                    <!-- value должен точно совпадать с region / district / locality в БД -->
                     <select id="region">
-                        <option>
+                        <option value="Томская область" selected>
                             Томская область
                         </option>
-                        <option>
+                        <option value="г. Томск">
                             Томск
                         </option>
-                        <option>
+                        <option value="Томский район">
                             Томский район
+                        </option>
+                        <option value="">
+                            Все территории
                         </option>
                     </select>
                 </div>
@@ -189,7 +192,10 @@
             <span>
                 Быстрый выбор
             </span>
-            <button type="button" data-period="current">
+            <button
+                type="button"
+                class="active"
+                data-period="current">
                 Текущий год
             </button>
             <button type="button" data-period="12">
@@ -207,15 +213,12 @@
             <button type="button" data-period="2025">
                 2025
             </button>
-            <button
-                type="button"
-                class="active"
-                data-period="2026">
+            <button type="button" data-period="2026">
                 2026
             </button>
         </div>
     </section>
-    <section class="report-section">
+    <section class="report-section" id="currentReport">
         <div class="section-heading">
             <div>
                 <span class="section-label">
@@ -225,9 +228,7 @@
                     Данные за выбранный период
                 </h2>
                 <p id="periodText">
-                    1 января 2026 г. — 18 сентября 2026 г.
-                    <span>·</span>
-                    Найдено: 415
+                    Отчёт ещё не сформирован
                 </p>
             </div>
             <button
@@ -246,15 +247,15 @@
                 <div class="kpi-label">
                     СРЕДНЯЯ ЦЕНА ЗА СОТКУ
                 </div>
-                <strong>
-                    70 705 ₽
+                <strong id="kpiAverage">
+                    —
                 </strong>
                 <div class="kpi-bottom">
                     <span>
                         текущий период
                     </span>
-                    <b class="positive">
-                        ▲ 22%
+                    <b class="neutral-value" id="kpiAverageDelta">
+                        —
                     </b>
                 </div>
             </article>
@@ -265,15 +266,15 @@
                 <div class="kpi-label">
                     МЕДИАННАЯ ЦЕНА
                 </div>
-                <strong>
-                    47 267 ₽
+                <strong id="kpiMedian">
+                    —
                 </strong>
                 <div class="kpi-bottom">
                     <span>
                         за сотку
                     </span>
-                    <b class="positive">
-                        ▲ 23%
+                    <b class="neutral-value" id="kpiMedianDelta">
+                        —
                     </b>
                 </div>
             </article>
@@ -282,14 +283,14 @@
                     ↗
                 </div>
                 <div class="kpi-label">
-                    ИЗМЕНЕНИЕ
+                    ИЗМЕНЕНИЕ МЕДИАНЫ
                 </div>
-                <strong class="green-value">
-                    +22%
+                <strong id="kpiChange">
+                    —
                 </strong>
                 <div class="kpi-bottom">
-                    <span>
-                        к периоду 2025
+                    <span id="kpiChangeCaption">
+                        к прошлому году
                     </span>
                     <b class="neutral-value">
                         год к году
@@ -303,15 +304,15 @@
                 <div class="kpi-label">
                     ОБЪЯВЛЕНИЙ
                 </div>
-                <strong>
-                    415
+                <strong id="kpiCount">
+                    —
                 </strong>
                 <div class="kpi-bottom">
                     <span>
                         за период
                     </span>
-                    <b class="negative">
-                        ▼ 1,9%
+                    <b class="neutral-value" id="kpiCountDelta">
+                        —
                     </b>
                 </div>
             </article>
@@ -322,15 +323,15 @@
                     <span class="section-label">
                         ДЕТАЛИЗАЦИЯ
                     </span>
-                    <h3>
+                    <h3 id="currentTableTitle">
                         Показатели по кварталам
                     </h3>
                     <p>
                         Изменение относительно того же периода годом ранее
                     </p>
                 </div>
-                <span class="data-count">
-                    3 периода
+                <span class="data-count" id="currentPeriodsCount">
+                    0 периодов
                 </span>
             </div>
             <div class="table-wrapper">
@@ -345,118 +346,16 @@
                         <th>Минимум</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <strong>Q1 2026</strong>
-                        </td>
-                        <td>
-                            145
-                            <span class="change down">
-                                ▼ 2%
-                            </span>
-                        </td>
-                        <td>
-                            <strong>70 705 ₽</strong>
-                            <span class="change up">
-                                ▲ 22%
-                            </span>
-                        </td>
-                        <td>
-                            47 267 ₽
-                            <span class="change up">
-                                ▲ 23%
-                            </span>
-                        </td>
-                        <td>
-                            214 900 ₽
-                            <span class="change up">
-                                ▲ 14%
-                            </span>
-                        </td>
-                        <td>
-                            24 600 ₽
-                            <span class="change up">
-                                ▲ 15%
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <strong>Q2 2026</strong>
-                        </td>
-                        <td>
-                            144
-                            <span class="change down">
-                                ▼ 6%
-                            </span>
-                        </td>
-                        <td>
-                            <strong>68 721 ₽</strong>
-                            <span class="change up">
-                                ▲ 12%
-                            </span>
-                        </td>
-                        <td>
-                            48 716 ₽
-                            <span class="change up">
-                                ▲ 14%
-                            </span>
-                        </td>
-                        <td>
-                            220 050 ₽
-                            <span class="change up">
-                                ▲ 12%
-                            </span>
-                        </td>
-                        <td>
-                            28 971 ₽
-                            <span class="change up">
-                                ▲ 23%
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <strong>Q3 2026</strong>
-                        </td>
-                        <td>
-                            126
-                            <span class="change up">
-                                ▲ 4%
-                            </span>
-                        </td>
-                        <td>
-                            <strong>73 843 ₽</strong>
-                            <span class="change up">
-                                ▲ 12%
-                            </span>
-                        </td>
-                        <td>
-                            49 760 ₽
-                            <span class="change up">
-                                ▲ 16%
-                            </span>
-                        </td>
-                        <td>
-                            233 689 ₽
-                            <span class="change up">
-                                ▲ 16%
-                            </span>
-                        </td>
-                        <td>
-                            29 682 ₽
-                            <span class="change up">
-                                ▲ 16%
-                            </span>
-                        </td>
+                    <tbody id="currentTableBody">
+                    <tr class="table-empty">
+                        <td colspan="6">Нажмите «Сформировать», чтобы получить данные</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
-    <section class="report-section">
+    <section class="report-section" id="segmentsReport">
         <div class="section-heading">
             <div>
                 <span class="section-label">
@@ -470,116 +369,7 @@
                 </p>
             </div>
         </div>
-        <div class="segment-grid">
-            <article class="segment-card">
-                <div class="segment-number">
-                    01
-                </div>
-                <div class="segment-top">
-                    <span>
-                        До 30 соток
-                    </span>
-                    <b>
-                        254 объекта
-                    </b>
-                </div>
-                <strong>
-                    71 747 ₽
-                </strong>
-                <span class="segment-caption">
-                    средняя цена за сотку
-                </span>
-                <div class="segment-divider"></div>
-                <div class="segment-bottom">
-
-                    <span>
-                        Медиана
-                        <b>
-                            48 818 ₽
-                        </b>
-                    </span>
-                    <strong class="up">
-                         ▲ 11%
-                    </strong>
-                </div>
-
-                <div class="segment-bar">
-                    <i style="width: 86%"></i>
-                </div>
-            </article>
-
-            <article class="segment-card featured-segment">
-                <div class="segment-number">
-                    02
-                </div>
-                <div class="segment-top">
-                    <span>
-                        От 30 до 50 соток
-                    </span>
-                    <b>
-                        84 объекта
-                    </b>
-                </div>
-                <strong>
-                    73 171 ₽
-                </strong>
-                <span class="segment-caption">
-                    средняя цена за сотку
-                </span>
-                <div class="segment-divider"></div>
-                <div class="segment-bottom">
-                    <span>
-                        Медиана
-                        <b>
-                            49 438 ₽
-                        </b>
-                    </span>
-                    <strong class="up">
-                        ▲ 16%
-                    </strong>
-                </div>
-                <div class="segment-bar">
-                    <i style="width: 94%"></i>
-                </div>
-            </article>
-
-            <article class="segment-card">
-                <div class="segment-number">
-                    03
-                </div>
-                <div class="segment-top">
-                    <span>
-                        Свыше 50 соток
-                    </span>
-                    <b>
-                        77 объектов
-                    </b>
-                </div>
-                <strong>
-                    66 002 ₽
-                </strong>
-                <span class="segment-caption">
-                    средняя цена за сотку
-                </span>
-                <div class="segment-divider"></div>
-                <div class="segment-bottom">
-                    <span>
-                        Медиана
-                        <b>
-                            44 750 ₽
-                        </b>
-                    </span>
-
-                    <strong class="up">
-                        ▲ 33%
-                    </strong>
-                </div>
-
-                <div class="segment-bar">
-                    <i style="width: 76%"></i>
-                </div>
-            </article>
-        </div>
+        <div class="segment-grid" id="segmentGrid"></div>
 
 
         <div class="comparison-note">
@@ -599,7 +389,7 @@
         </div>
     </section>
 
-    <section class="report-section history-section">
+    <section class="report-section history-section" id="historyReport">
         <div class="section-heading">
             <div>
                 <span class="section-label">
@@ -608,14 +398,12 @@
                 <h2>
                     Тот же период год назад
                 </h2>
-                <p>
-                    1 января 2025 г. — 18 сентября 2025 г.
-                    <span>·</span>
-                    Найдено: 423
+                <p id="historyPeriodText">
+                    —
                 </p>
             </div>
-            <span class="data-count">
-                2025
+            <span class="data-count" id="historyYearBadge">
+                —
             </span>
         </div>
         <div class="data-card history-data-card">
@@ -624,15 +412,15 @@
                     <span class="section-label">
                         ДЕТАЛИЗАЦИЯ
                     </span>
-                    <h3>
+                    <h3 id="historyTableTitle">
                         Показатели по кварталам
                     </h3>
                     <p>
                         Значения за аналогичный период предыдущего года
                     </p>
                 </div>
-                <span class="data-count">
-                    3 периода
+                <span class="data-count" id="historyPeriodsCount">
+                    0 периодов
                 </span>
             </div>
             <div class="table-wrapper">
@@ -647,111 +435,9 @@
                         <th>Минимум</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <strong>Q1 2025</strong>
-                        </td>
-                        <td>
-                            148
-                            <span class="change down">
-                                ▼ 2%
-                            </span>
-                        </td>
-                        <td>
-                            <strong>57 728 ₽</strong>
-                            <span class="change down">
-                                ▼ 18%
-                            </span>
-                        </td>
-                        <td>
-                            38 422 ₽
-                            <span class="change down">
-                                ▼ 19%
-                            </span>
-                        </td>
-                        <td>
-                            188 880 ₽
-                            <span class="change down">
-                                ▼ 12%
-                            </span>
-                        </td>
-                        <td>
-                            21 400 ₽
-                            <span class="change down">
-                                ▼ 13%
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <strong>Q2 2025</strong>
-                        </td>
-                        <td>
-                            154
-                            <span class="change up">
-                                ▲ 7%
-                            </span>
-                        </td>
-                        <td>
-                            <strong>61 608 ₽</strong>
-                            <span class="change down">
-                                ▼ 10%
-                            </span>
-                        </td>
-                        <td>
-                            42 854 ₽
-                            <span class="change down">
-                                ▼ 12%
-                            </span>
-                        </td>
-                        <td>
-                            196 500 ₽
-                            <span class="change down">
-                                ▼ 11%
-                            </span>
-                        </td>
-                        <td>
-                            23 480 ₽
-                            <span class="change down">
-                                ▼ 19%
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <strong>Q3 2025</strong>
-                        </td>
-                        <td>
-                            121
-                            <span class="change down">
-                                ▼ 4%
-                            </span>
-                        </td>
-                        <td>
-                            <strong>65 786 ₽</strong>
-                            <span class="change down">
-                                ▼ 12%
-                            </span>
-                        </td>
-                        <td>
-                            42 917 ₽
-                            <span class="change down">
-                                ▼ 14%
-                            </span>
-                        </td>
-                        <td>
-                            201 222 ₽
-                            <span class="change down">
-                                ▼ 16%
-                            </span>
-                        </td>
-                        <td>
-                            25 567 ₽
-                            <span class="change down">
-                                ▼ 16%
-                            </span>
-                        </td>
+                    <tbody id="historyTableBody">
+                    <tr class="table-empty">
+                        <td colspan="6">Нет данных</td>
                     </tr>
                     </tbody>
                 </table>
@@ -763,8 +449,8 @@
 
                 <div>
 
-                    <span class="section-label">
-                        СЕГМЕНТАЦИЯ 2025
+                    <span class="section-label" id="historySectorLabel">
+                        СЕГМЕНТАЦИЯ
                     </span>
 
                     <h3>
@@ -781,73 +467,11 @@
             </div>
 
 
-            <div class="history-sector-grid">
-
-                <div class="history-sector-card">
-
-                    <span>
-                        До 30 соток
-                    </span>
-
-                    <strong>
-                        64 352 ₽
-                    </strong>
-
-                    <small>
-                        252 объявления
-                    </small>
-
-                    <b>
-                        Медиана 41 995 ₽
-                    </b>
-
-                </div>
-
-
-                <div class="history-sector-card">
-
-                    <span>
-                        От 30 до 50 соток
-                    </span>
-
-                    <strong>
-                        62 850 ₽
-                    </strong>
-
-                    <small>
-                        98 объявлений
-                    </small>
-
-                    <b>
-                        Медиана 41 856 ₽
-                    </b>
-
-                </div>
-
-
-                <div class="history-sector-card">
-
-                    <span>
-                        Свыше 50 соток
-                    </span>
-
-                    <strong>
-                        49 526 ₽
-                    </strong>
-
-                    <small>
-                        73 объявления
-                    </small>
-
-                    <b>
-                        Медиана 40 417 ₽
-                    </b>
-                </div>
-            </div>
+            <div class="history-sector-grid" id="historySectorGrid"></div>
         </div>
     </section>
 
-    <section class="report-section dynamics-section">
+    <section class="report-section dynamics-section" id="dynamicsReport">
 
         <div class="chart-card">
 
@@ -863,8 +487,8 @@
                         Динамика стоимости
                     </h3>
 
-                    <p>
-                        Цена за сотку в сравнении с аналогичным периодом 2025 года
+                    <p id="chartSubtitle">
+                        Цена за сотку в сравнении с аналогичным периодом прошлого года
                     </p>
 
                 </div>
@@ -875,7 +499,7 @@
                     <button
                         class="active"
                         type="button"
-                        data-chart="price">
+                        data-chart="average">
                         Цена
                     </button>
 
@@ -892,12 +516,12 @@
 
                 <span>
                     <i class="legend-current"></i>
-                    2026
+                    <span id="legendCurrent">Текущий период</span>
                 </span>
 
                 <span>
                     <i class="legend-previous"></i>
-                    2025
+                    <span id="legendPrevious">Год назад</span>
                 </span>
 
             </div>
@@ -905,18 +529,10 @@
 
             <div class="chart">
 
-                <div class="chart-values">
-
-                    <span>80 000</span>
-                    <span>70 000</span>
-                    <span>60 000</span>
-                    <span>50 000</span>
-                    <span>40 000</span>
-
-                </div>
+                <div class="chart-values" id="chartValues"></div>
 
 
-                <div class="chart-area">
+                <div class="chart-area" id="chartArea">
 
                     <div class="grid grid-1"></div>
                     <div class="grid grid-2"></div>
@@ -951,77 +567,26 @@
                             </linearGradient>
                         </defs>
 
-                        <path
-                            class="area-path"
-                            d="
-                            M0 275
-                            C90 266 135 248 205 237
-                            C275 226 320 235 390 195
-                            C455 160 510 180 570 140
-                            C640 96 680 112 745 82
-                            C820 48 860 67 1000 38
-                            L1000 360
-                            L0 360 Z
-                            "></path>
+                        <path class="area-path" id="chartAreaPath" d=""></path>
 
-                        <path
-                            class="previous-line"
-                            d="
-                            M0 308
-                            C90 297 135 291 205 280
-                            C275 270 320 274 390 253
-                            C455 232 510 242 570 214
-                            C640 190 680 198 745 171
-                            C820 151 860 159 1000 128
-                            ">
-                        </path>
+                        <path class="previous-line" id="chartPreviousLine" d=""></path>
 
-                        <path
-                            class="current-line"
-                            d="
-                            M0 275
-                            C90 266 135 248 205 237
-                            C275 226 320 235 390 195
-                            C455 160 510 180 570 140
-                            C640 96 680 112 745 82
-                            C820 48 860 67 1000 38
-                            ">
-                        </path>
-
-                        <circle
-                            class="chart-point"
-                            cx="1000"
-                            cy="38"
-                            r="7">
-                        </circle>
+                        <path class="current-line" id="chartCurrentLine" d=""></path>
                     </svg>
 
+                    <div class="chart-dots" id="chartDots"></div>
 
-                    <div class="chart-tooltip">
-                        <span>
-                            Сентябрь 2026
-                        </span>
-                        <strong>
-                            73 843 ₽
-                        </strong>
-                        <b>
-                            ↑ 12%
-                        </b>
+                    <div class="chart-tooltip" id="chartTooltip" hidden>
+                        <span></span>
+                        <strong></strong>
+                        <b></b>
                     </div>
 
-
-                    <div class="chart-months">
-
-                        <span>Янв</span>
-                        <span>Фев</span>
-                        <span>Мар</span>
-                        <span>Апр</span>
-                        <span>Май</span>
-                        <span>Июн</span>
-                        <span>Июл</span>
-                        <span>Авг</span>
-                        <span>Сен</span>
+                    <div class="chart-empty" id="chartEmpty">
+                        Нет данных для построения графика
                     </div>
+
+                    <div class="chart-months" id="chartLabels"></div>
                 </div>
             </div>
         </div>
@@ -1030,7 +595,7 @@
 
 
 <div class="toast" id="toast">
-    <div class="toast-icon">
+    <div class="toast-icon" id="toastIcon">
         ✓
     </div>
     <div>
@@ -1046,6 +611,7 @@
 
 
 <script src="../../script.js"></script>
+<script src="quarterly.js"></script>
 
 </body>
 </html>

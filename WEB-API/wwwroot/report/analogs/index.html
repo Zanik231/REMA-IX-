@@ -130,7 +130,7 @@
 
             <div>
                 <span class="location-label">Текущая локация</span>
-                <strong id="heroLocation">Томский район</strong>
+                <strong id="heroLocation">—</strong>
             </div>
 
         </div>
@@ -185,18 +185,18 @@
     <div class="field">
         <label for="areaFrom">Площадь, сотки</label>
         <div class="range-inputs">
-            <input type="number" id="areaFrom" placeholder="От">
+            <input type="number" id="areaFrom" placeholder="От" min="0" step="any">
             <span>—</span>
-            <input type="number" id="areaTo" placeholder="До">
+            <input type="number" id="areaTo" placeholder="До" min="0" step="any">
         </div>
     </div>
 
     <div class="field">
         <label for="priceFrom">Цена за сотку, ₽</label>
         <div class="range-inputs">
-            <input type="number" id="priceFrom" placeholder="От">
+            <input type="number" id="priceFrom" placeholder="От" min="0" step="any">
             <span>—</span>
-            <input type="number" id="priceTo" placeholder="До">
+            <input type="number" id="priceTo" placeholder="До" min="0" step="any">
         </div>
     </div>
 
@@ -292,7 +292,7 @@
     </section>
 
 
-  <section class="summary-head">
+    <section class="summary-head analogs-block" id="summarySection">
 
         <div>
             <span class="filter-label">РЕЗУЛЬТАТЫ ВЫБОРКИ</span>
@@ -301,41 +301,46 @@
 
         <div class="found">
             Найдено:
-            <strong id="foundCount">2142</strong>
-            объявления
+            <strong id="foundCount">—</strong>
+            <span id="foundLabel">объявлений</span>
         </div>
 
     </section>
 
-    <section class="stats-grid">
+    <p class="results-note" id="resultsNote" hidden>
+        API возвращает не больше 100 самых свежих объявлений — сводка и сегментация
+        рассчитаны по ним. Уточните параметры поиска, чтобы сузить выборку.
+    </p>
+
+    <section class="stats-grid analogs-block" id="statsSection">
 
         <article class="stat-card">
             <span>Найдено объектов</span>
-            <strong>2142</strong>
-            <small>в текущей выборке</small>
+            <strong id="statCount">—</strong>
+            <small id="statCountCaption">в текущей выборке</small>
         </article>
 
         <article class="stat-card">
             <span>Минимальная цена за сотку</span>
-            <strong>14 067 ₽</strong>
-            <small>по найденным объектам</small>
+            <strong id="statMin">—</strong>
+            <small id="statMinCaption">по найденным объектам</small>
         </article>
 
         <article class="stat-card">
             <span>Максимальная цена за сотку</span>
-            <strong>233 689 ₽</strong>
-            <small>по найденным объектам</small>
+            <strong id="statMax">—</strong>
+            <small id="statMaxCaption">по найденным объектам</small>
         </article>
 
         <article class="stat-card accent">
             <span>Средняя цена за сотку</span>
-            <strong>53 467 ₽</strong>
-            <small>медиана — 37 500 ₽</small>
+            <strong id="statAverage">—</strong>
+            <small id="statMedian">медиана — —</small>
         </article>
 
     </section>
 
-    <section class="segments">
+    <section class="segments analogs-block" id="segmentsSection">
 
         <div class="section-title">
 
@@ -346,75 +351,11 @@
 
         </div>
 
-        <div class="segment-grid">
-
-            <article class="segment-card">
-
-                <div class="segment-top">
-                    <span>01</span>
-                    <b>1 286 объектов</b>
-                </div>
-
-                <h3>До 30 соток</h3>
-
-                <div class="segment-price">
-                    <strong>52 928 ₽</strong>
-                    <span>средняя за сотку</span>
-                </div>
-
-                <div class="segment-bottom">
-                    <span>Медиана</span>
-                    <strong>37 000 ₽</strong>
-                </div>
-
-            </article>
-
-            <article class="segment-card">
-
-                <div class="segment-top">
-                    <span>02</span>
-                    <b>463 объекта</b>
-                </div>
-
-                <h3>От 30 до 50 соток</h3>
-
-                <div class="segment-price">
-                    <strong>55 887 ₽</strong>
-                    <span>средняя за сотку</span>
-                </div>
-
-                <div class="segment-bottom">
-                    <span>Медиана</span>
-                    <strong>38 320 ₽</strong>
-                </div>
-
-            </article>
-
-            <article class="segment-card">
-
-                <div class="segment-top">
-                    <span>03</span>
-                    <b>393 объекта</b>
-                </div>
-
-                <h3>Свыше 50 соток</h3>
-
-                <div class="segment-price">
-                    <strong>52 380 ₽</strong>
-                    <span>средняя за сотку</span>
-                </div>
-
-                <div class="segment-bottom">
-                    <span>Медиана</span>
-                    <strong>37 467 ₽</strong>
-                </div>
-
-            </article>
-
-        </div>
+        <div class="segment-grid" id="segmentGrid"></div>
 
     </section>
 
+    <section class="results-section analogs-block" id="resultsSection">
 
         <div class="list-toolbar">
 
@@ -423,11 +364,26 @@
                 Найденные объекты
             </div>
 
-            <div class="toolbar-count">
-                Показано
-                <strong id="paginationFrom">0</strong>–<strong id="paginationTo">0</strong>
-                из
-                <strong id="paginationTotal">0</strong>
+            <div class="toolbar-side">
+
+                <div class="toolbar-count">
+                    Показано
+                    <strong id="paginationFrom">0</strong>–<strong id="paginationTo">0</strong>
+                    из
+                    <strong id="paginationTotal">0</strong>
+                </div>
+
+                <label class="toolbar-sort">
+                    <span>Сортировка</span>
+                    <select id="sortSelect">
+                        <option value="newest">Сначала новые</option>
+                        <option value="price-asc">Цена за сотку ↑</option>
+                        <option value="price-desc">Цена за сотку ↓</option>
+                        <option value="area-asc">Площадь ↑</option>
+                        <option value="area-desc">Площадь ↓</option>
+                    </select>
+                </label>
+
             </div>
 
         </div>
@@ -444,10 +400,10 @@
 
 
 <div id="toast" class="toast">
-    <div class="toast-icon">✓</div>
+    <div class="toast-icon" id="toastIcon">✓</div>
 
     <div>
-        <strong>Готово</strong>
+        <strong id="toastTitle">Готово</strong>
         <p id="toastText"></p>
     </div>
 </div>
