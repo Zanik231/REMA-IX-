@@ -1,5 +1,11 @@
 public class Program
 {
+    public record AnalyticsRequest(
+        DateTime Start,
+        DateTime End,
+        string Interval,
+        string Region
+    );
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
@@ -22,25 +28,30 @@ public class Program
 
         app.UseAuthorization();
 
-        var summaries = new[]
-        {
-                "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-            };
-
-        app.MapGet("/weatherforecast", (HttpContext httpContext) =>
-        {
-            var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
+        app.MapPost("/api/report/calculate", (AnalyticsRequest request) => {
+            if ((request.End - request.Start).Ticks <= 0)
+                return Results.BadRequest(new
                 {
-                    Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    TemperatureC = Random.Shared.Next(-20, 55),
-                    Summary = summaries[Random.Shared.Next(summaries.Length)]
-                })
-                .ToArray();
-            return forecast;
-        })
-        .WithName("GetWeatherForecast");
+                    Message = "Конец периода не может быть больше начала!"
+                });
 
-        app.Run();
+            double averageValue = 42.5;
+            double medianValue = 41.0;
+            int announcementCount = 0;
+            double minimumPerUnit = 41.0;
+            double maximumPerUnit = 41.0;
+
+            return Results.Ok(new
+            {
+                Average = averageValue,
+                Median = medianValue,
+                AnnouncementCount = announcementCount,
+                MinimumPerUnit = minimumPerUnit,
+                MaximumPerUnit = maximumPerUnit
+            });
+        });
+
+
+    app.Run();
     }
 }

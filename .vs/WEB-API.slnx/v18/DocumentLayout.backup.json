@@ -7,10 +7,6 @@
       "RelativeMoniker": "D:0:0:{19D424FC-5467-B277-63B7-25D8650921C4}|WEB-API\\Startup_Polygon-IX(Web-Api).csproj|solutionrelative:web-api\\scripts\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{19D424FC-5467-B277-63B7-25D8650921C4}|WEB-API\\Startup_Polygon-IX(Web-Api).csproj|d:\\repos\\rema\\web-api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{19D424FC-5467-B277-63B7-25D8650921C4}|WEB-API\\Startup_Polygon-IX(Web-Api).csproj|solutionrelative:web-api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{19D424FC-5467-B277-63B7-25D8650921C4}|WEB-API\\Startup_Polygon-IX(Web-Api).csproj|d:\\repos\\rema\\web-api\\startup_polygon-ix(web-api).http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
       "RelativeMoniker": "D:0:0:{19D424FC-5467-B277-63B7-25D8650921C4}|WEB-API\\Startup_Polygon-IX(Web-Api).csproj|solutionrelative:web-api\\startup_polygon-ix(web-api).http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
     }
@@ -22,24 +18,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\repos\\REMA\\WEB-API\\appsettings.json",
-              "RelativeDocumentMoniker": "WEB-API\\appsettings.json",
-              "ToolTip": "D:\\repos\\REMA\\WEB-API\\appsettings.json",
-              "RelativeToolTip": "WEB-API\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-09-30T17:43:25.668Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -49,14 +32,14 @@
               "RelativeDocumentMoniker": "WEB-API\\Scripts\\Program.cs",
               "ToolTip": "D:\\repos\\REMA\\WEB-API\\Scripts\\Program.cs",
               "RelativeToolTip": "WEB-API\\Scripts\\Program.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAqwBwAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-30T14:51:58.508Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Startup_Polygon-IX(Web-Api).http",
               "DocumentMoniker": "D:\\repos\\REMA\\WEB-API\\Startup_Polygon-IX(Web-Api).http",
               "RelativeDocumentMoniker": "WEB-API\\Startup_Polygon-IX(Web-Api).http",
