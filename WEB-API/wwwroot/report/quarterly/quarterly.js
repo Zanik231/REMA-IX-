@@ -399,7 +399,7 @@
         }
 
         if (typeof showToast === "function") {
-            showToast(title, text);
+            showToast(title, text, isError);
         }
 
         clearTimeout(toastResetTimer);

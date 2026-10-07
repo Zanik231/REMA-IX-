@@ -6,8 +6,8 @@
 
     <title>LandScope — Подбор аналогов</title>
 
-    <link rel="stylesheet" href="../../style.css">
-    <link rel="stylesheet" href="analogs.css">
+    <link rel="stylesheet" href="../../style.css?v=20261007">
+    <link rel="stylesheet" href="analogs.css?v=20261007-4">
 </head>
 
 <body>
@@ -110,10 +110,6 @@
 
         <div class="hero-location-card">
 
-            <div class="location-icon">
-                ⌖
-            </div>
-
             <div>
                 <span class="location-label">
                     Текущая локация
@@ -160,100 +156,106 @@
 
             <div class="field">
 
-                <label for="regionInput">
-                    Регион
-                </label>
+    <label for="regionInput">
+        Регион
+    </label>
 
-                <div class="input-wrap">
+    <div class="input-wrap">
 
-                    <span class="input-icon">
-                        ⌖
-                    </span>
+        <select id="regionInput">
+            <option value="Томская область" selected>
+                Томская область
+            </option>
 
-                    <input
-                        type="text"
-                        id="regionInput"
-                        value="Томская область"
-                        placeholder="Введите регион">
+            <option value="Новосибирская область">
+                Новосибирская область
+            </option>
 
-                </div>
+            <option value="Кемеровская область">
+                Кемеровская область
+            </option>
 
-            </div>
+            <option value="Алтайский край">
+                Алтайский край
+            </option>
+        </select>
+
+    </div>
+
+</div>
 
 
             <div class="field field-location">
 
-                <label for="districtInput">
-                    Район
-                </label>
+    <label for="districtInput">
+        Район
+    </label>
 
-                <div class="input-wrap">
+    <div class="input-wrap">
 
-                    <span class="input-icon">
-                        ⌖
-                    </span>
+        <select id="districtInput">
 
-                    <input
-                        type="text"
-                        id="districtInput"
-                        value="Томский район"
-                        placeholder="Введите район">
+            <option value="Томский район" selected>
+                Томский район
+            </option>
 
-                </div>
+            <option value="Асиновский район">
+                Асиновский район
+            </option>
 
-            </div>
+            <option value="Шегарский район">
+                Шегарский район
+            </option>
 
+            <option value="Зырянский район">
+                Зырянский район
+            </option>
 
+            <option value="Кожевниковский район">
+                Кожевниковский район
+            </option>
+
+            <option value="Колпашевский район">
+                Колпашевский район
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
             <div class="field">
-
                 <label for="areaFrom">
                     Площадь, сотки
                 </label>
-
                 <div class="range-inputs">
-
                     <input
                         type="number"
                         id="areaFrom"
                         placeholder="От">
-
                     <span>—</span>
-
                     <input
                         type="number"
                         id="areaTo"
                         placeholder="До">
-
                 </div>
-
             </div>
-
-
             <div class="field">
-
                 <label for="priceFrom">
                     Цена за сотку, ₽
                 </label>
-
                 <div class="range-inputs">
-
                     <input
                         type="number"
                         id="priceFrom"
                         placeholder="От">
-
                     <span>—</span>
-
                     <input
                         type="number"
                         id="priceTo"
                         placeholder="До">
-
                 </div>
-
             </div>
-
-
             <div class="field">
 
                 <label for="categoryFilter">
@@ -454,17 +456,13 @@
         <div class="section-title">
 
             <div>
-
                 <span class="filter-label">
                     СЕГМЕНТАЦИЯ РЫНКА
                 </span>
-
                 <h2>
                     Распределение по площади участка
                 </h2>
-
             </div>
-
         </div>
 
         <div class="segment-grid" id="segmentGrid"></div>
@@ -496,10 +494,10 @@
                     <span>Сортировка</span>
                     <select id="sortSelect">
                         <option value="newest">Сначала новые</option>
-                        <option value="price-asc">Цена за сотку ↑</option>
-                        <option value="price-desc">Цена за сотку ↓</option>
-                        <option value="area-asc">Площадь ↑</option>
-                        <option value="area-desc">Площадь ↓</option>
+                        <option value="price-asc">Цена за сотку ▲</option>
+                        <option value="price-desc">Цена за сотку ▼</option>
+                        <option value="area-asc">Площадь ▲</option>
+                        <option value="area-desc">Площадь ▼</option>
                     </select>
                 </label>
 
@@ -536,8 +534,8 @@
 </div>
 
 
-<script src="../../script.js"></script>
-<script src="analogs.js"></script>
+<script src="../../script.js?v=20261007"></script>
+<script src="analogs.js?v=20261007-5"></script>
 
 </body>
 </html>

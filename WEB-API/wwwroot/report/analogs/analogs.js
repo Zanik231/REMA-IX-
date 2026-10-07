@@ -7,7 +7,7 @@
     // /api/analog/find отдаёт не больше 100 самых свежих объявлений (Take(100))
     const API_LIMIT = 100;
 
-    const PER_PAGE = 10;
+    const PER_PAGE = 4;
 
     // Границы совпадают с сегментацией /api/report/calculate (AreaAnalytics)
     const SEGMENTS = [
@@ -278,7 +278,7 @@
         }
 
         if (typeof showToast === "function") {
-            showToast(title, text);
+            showToast(title, text, isError);
         }
 
         clearTimeout(toastResetTimer);
@@ -732,10 +732,19 @@
     function goToPage(page) {
         if (page === state.page) return;
 
+        // Без прокрутки к началу списка: держим пагинацию на том же месте
+        // экрана, даже если новые карточки другой высоты
+        const pagination = $("pagination");
+        const before = pagination.getBoundingClientRect().top;
+
         state.page = page;
         renderCards();
 
-        $("resultsSection").scrollIntoView({ behavior: "smooth", block: "start" });
+        const shift = pagination.getBoundingClientRect().top - before;
+
+        if (shift) {
+            window.scrollBy({ top: shift, behavior: "instant" });
+        }
     }
 
 

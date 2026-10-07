@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20261007">
 </head>
 <body>
 <header class="site-header">
@@ -141,25 +141,41 @@
     </section>
 
     <section class="list-section">
-        <div class="list-heading">
-            <div>
-                <span class="filter-label">АКТУАЛЬНЫЕ ОБЪЯВЛЕНИЯ</span>
-                <h2>Объявления</h2>
-                <p>
-                    Отсортированы по дате публикации, новые сверху.
-                </p>
-            </div>
-            <div class="search-box">
-                <span>⌕</span>
-                <input id="searchInput" type="text" placeholder="Поиск по адресу...">
-            </div>
+        <div class="list-toolbar">
+
+    <div class="toolbar-result">
+        <span class="toolbar-dot"></span>
+        <span>Найденные объекты</span>
+    </div>
+
+    <div class="toolbar-side">
+
+        <div class="toolbar-count">
+            Показано
+            <strong id="paginationFrom">0</strong>–<strong id="paginationTo">0</strong>
+            из
+            <strong id="paginationTotal">0</strong>
         </div>
+
+        <label class="toolbar-sort">
+            <span>Сортировка</span>
+
+            <select id="sortSelect">
+                <option value="newest">Сначала новые</option>
+                <option value="price-asc">Цена за сотку ▲</option>
+                <option value="price-desc">Цена за сотку ▼</option>
+                <option value="area-asc">Площадь ▲</option>
+                <option value="area-desc">Площадь ▼</option>
+            </select>
+        </label>
+
+    </div>
+
+</div>
+
         <div class="list-status" id="listStatus">Загружаем объявления…</div>
         <div class="objects-list" id="objectsList"></div>
-        <div class="list-footer" id="listFooter" hidden>
-            <span class="list-summary" id="listSummary"></span>
-            <div class="pagination" id="pagination"></div>
-        </div>
+        <div class="pagination" id="pagination"></div>
     </section>
 </main>
 <div class="toast" id="toast">
@@ -170,6 +186,6 @@
     </div>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=20261007"></script>
 </body>
 </html>

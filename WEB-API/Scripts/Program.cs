@@ -33,6 +33,7 @@ namespace Startup_Polygon_IX_Web_Api_.Scripts
             decimal? PriceFrom,
             decimal? PriceTo,
             string? Search,
+            string? Sort = null,
             int Page = 1,
             int PageSize = 12
         );
@@ -147,9 +148,29 @@ namespace Startup_Polygon_IX_Web_Api_.Scripts
 
             app.UseHttpsRedirection();
             app.UseAuthorization();
-            app.UseStaticFiles();
+
+            // В режиме разработки запрещаем кэшировать статику.
+            // Без Cache-Control браузер применяет эвристическое правило
+            // (10% от возраста файла) и может отдать недавно изменённые
+            // index.html/script.js «со вчерашнего дня»: страница по адресу «/»
+            // и по адресу «/index.html» при этом выглядит по-разному.
+            var staticFiles = new StaticFileOptions
+            {
+                OnPrepareResponse = context =>
+                {
+                    if (app.Environment.IsDevelopment())
+                    {
+                        context.Context.Response.Headers.CacheControl = "no-cache";
+                    }
+                }
+            };
+
+            // UseDefaultFiles обязан стоять перед UseStaticFiles:
+            // так «/» и «/report/.../» обрабатываются как обычные файлы,
+            // а не через fallback.
             app.UseDefaultFiles();
-            app.MapFallbackToFile("index.html");
+            app.UseStaticFiles(staticFiles);
+            app.MapFallbackToFile("index.html", staticFiles);
 
             app.MapGet("/api/hello_world{text_arg}", async (string text_arg) =>
             {
@@ -376,9 +397,31 @@ namespace Startup_Polygon_IX_Web_Api_.Scripts
                 int pageSize = Math.Clamp(request.PageSize, 1, 100);
 
                 int total = await query.CountAsync();
-                var items = await query
-                    .OrderByDescending(p => p.DatePublished)
-                    .ThenByDescending(p => p.Id)
+
+                // Сортировку выполняем на сервере, а не на клиенте:
+                // иначе пересортировываются только 12 карточек текущей
+                // страницы и порядок «теряется» при переходе на следующую.
+                // Объекты без цены/площади всегда уходят в конец списка.
+                IOrderedQueryable<LandPlotsReport> ordered = request.Sort switch
+                {
+                    "price-asc" => query
+                        .OrderBy(p => p.PricePerUnit == null ? 1 : 0)
+                        .ThenBy(p => p.PricePerUnit),
+                    "price-desc" => query
+                        .OrderBy(p => p.PricePerUnit == null ? 1 : 0)
+                        .ThenByDescending(p => p.PricePerUnit),
+                    "area-asc" => query
+                        .OrderBy(p => p.Area == null ? 1 : 0)
+                        .ThenBy(p => p.Area),
+                    "area-desc" => query
+                        .OrderBy(p => p.Area == null ? 1 : 0)
+                        .ThenByDescending(p => p.Area),
+                    _ => query
+                        .OrderByDescending(p => p.DatePublished)
+                        .ThenByDescending(p => p.Id)
+                };
+
+                var items = await ordered
                     .Skip((page - 1) * pageSize)
                     .Take(pageSize)
                     .ToListAsync();
