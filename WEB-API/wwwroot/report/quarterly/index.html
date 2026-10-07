@@ -218,8 +218,66 @@
             </button>
         </div>
     </section>
-    <section class="report-section">
-        
+    <section class="report-section" id="currentReport">
+        <div class="section-heading">
+            <div>
+                <span class="section-label">
+                    СВОДКА ЗА ПЕРИОД
+                </span>
+                <h2>
+                    Итоги анализа
+                </h2>
+                <p id="periodText">
+                    Выберите период и нажмите «Сформировать»
+                </p>
+            </div>
+            <button class="export-button" id="exportButton" type="button">
+                <span>⇩</span>
+                Экспорт в CSV
+            </button>
+        </div>
+
+        <div class="kpi-grid">
+            <article class="kpi-card featured">
+                <div class="kpi-icon">₽</div>
+                <span class="kpi-label">СРЕДНЯЯ ЦЕНА ЗА СОТКУ</span>
+                <strong id="kpiAverage">—</strong>
+                <div class="kpi-bottom">
+                    <span id="kpiAverageDelta" class="neutral-value">—</span>
+                    <span>год к году</span>
+                </div>
+            </article>
+
+            <article class="kpi-card">
+                <div class="kpi-icon purple">М</div>
+                <span class="kpi-label">МЕДИАННАЯ ЦЕНА ЗА СОТКУ</span>
+                <strong id="kpiMedian">—</strong>
+                <div class="kpi-bottom">
+                    <span id="kpiMedianDelta" class="neutral-value">—</span>
+                    <span>год к году</span>
+                </div>
+            </article>
+
+            <article class="kpi-card">
+                <div class="kpi-icon green">№</div>
+                <span class="kpi-label">ОБЪЯВЛЕНИЙ ЗА ПЕРИОД</span>
+                <strong id="kpiCount">—</strong>
+                <div class="kpi-bottom">
+                    <span id="kpiCountDelta" class="neutral-value">—</span>
+                    <span>год к году</span>
+                </div>
+            </article>
+
+            <article class="kpi-card">
+                <div class="kpi-icon orange">%</div>
+                <span class="kpi-label">ИЗМЕНЕНИЕ МЕДИАНЫ</span>
+                <strong id="kpiChange">—</strong>
+                <div class="kpi-bottom">
+                    <span id="kpiChangeCaption">к прошлому году</span>
+                </div>
+            </article>
+        </div>
+
         <div class="data-card">
             <div class="data-card-header">
                 <div>

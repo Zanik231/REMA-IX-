@@ -60,8 +60,8 @@
             </div>
             <h1>Земельные участки</h1>
             <p>
-                Объявления собираются автоматически с Авито и Циана.
-                Данные в базе: <strong>2142</strong>.
+                Объявления собираются автоматически с Авито, Циана и Tomsk.ru09.
+                Данные в базе: <strong id="totalCount">…</strong>.
                 Перед принятием решений проверяйте актуальность на источнике.
             </p>
         </div>
@@ -69,7 +69,7 @@
             <button class="secondary-button" id="refreshButton" type="button">
                 Обновить данные
             </button>
-            <button class="primary-button" type="button">
+            <button class="primary-button" id="addSelectionButton" type="button">
                 Добавить выборку
             </button>
         </div>
@@ -154,139 +154,20 @@
                 <input id="searchInput" type="text" placeholder="Поиск по адресу...">
             </div>
         </div>
-        <div class="objects-list">
-            <article class="object-card">
-                <div class="object-visual visual-one">
-                    <span>ЗЕМЛЯ</span>
-                </div>
-                <div class="object-main">
-                    <div class="object-title-row">
-                        <div>
-                            <h3>
-                                Комсомольск, ул. Полевая, 193
-                            </h3>
-                            <div class="object-meta">
-                                <span class="source avito">Авито</span>
-                                <span>18 сентября 2026 г.</span>
-                            </div>
-                        </div>
-                        <span class="object-status">
-                            Новый
-                        </span>
-                    </div>
-                    <div class="object-tags">
-                        <span>15 соток</span>
-                        <span>ИЖС</span>
-                        <span>свет</span>
-                    </div>
-                    <p>
-                        В продаже земельный участок 15 соток.
-                        Проведены: электричество.
-                    </p>
-                    <div class="object-footer">
-                        <div>
-                            <strong>946 000 ₽</strong>
-                            <span>63 067 ₽/сотка</span>
-                        </div>
-                        <a
-                            href="https://www.avito.ru/tomsk/zemlya/9726178"
-                            target="_blank"
-                            class="object-link">
-                            Открыть на Авито
-                        </a>
-                    </div>
-                </div>
-            </article>
-            <article class="object-card">
-                <div class="object-visual visual-two">
-                    <span>ЗЕМЛЯ</span>
-                </div>
-                <div class="object-main">
-                    <div class="object-title-row">
-                        <div>
-                            <h3>
-                                Ярское, ул. Садовая, 140
-                            </h3>
-                            <div class="object-meta">
-                                <span class="source cian">Циан</span>
-                                <span>17 сентября 2026 г.</span>
-                            </div>
-                        </div>
-                        <span class="object-status">
-                            Проверен
-                        </span>
-                    </div>
-                    <div class="object-tags">
-                        <span>30 соток</span>
-                        <span>Садоводство</span>
-                        <span>газ</span>
-                        <span>свет</span>
-                        <span>вода</span>
-                    </div>
-                    <p>
-                        В продаже земельный участок 30 соток.
-                        Проведены: газ, электричество, вода.
-                    </p>
-                    <div class="object-footer">
-                        <div>
-                            <strong>3 612 000 ₽</strong>
-                            <span>120 400 ₽/сотка</span>
-                        </div>
-                        <a
-                            href="https://tomsk.cian.ru/sale/suburban/9602608/"
-                            target="_blank"
-                            class="object-link">
-                            Открыть на Циан
-                        </a>
-                    </div>
-                </div>
-            </article>
-            <article class="object-card">
-                <div class="object-visual visual-three">
-                    <span>ЗЕМЛЯ</span>
-                </div>
-                <div class="object-main">
-                    <div class="object-title-row">
-                        <div>
-                            <h3>
-                                с. Ново-Кусково, ул. Молодёжная, 24
-                            </h3>
-                            <div class="object-meta">
-                                <span class="source avito">Авито</span>
-                                <span>16 сентября 2026 г.</span>
-                            </div>
-                        </div>
-                        <span class="object-status">
-                            Новый
-                        </span>
-                    </div>
-                    <div class="object-tags">
-                        <span>12 соток</span>
-                        <span>ИЖС</span>
-                    </div>
-                    <p>
-                        Земельный участок в Асиновском районе.
-                        Подходит для строительства жилого дома.
-                    </p>
-                    <div class="object-footer">
-                        <div>
-                            <strong>511 000 ₽</strong>
-                            <span>42 583 ₽/сотка</span>
-                        </div>
-                        <button class="object-link" type="button">
-                            Подробнее
-                        </button>
-                    </div>
-                </div>
-            </article>
+        <div class="list-status" id="listStatus">Загружаем объявления…</div>
+        <div class="objects-list" id="objectsList"></div>
+        <div class="list-footer" id="listFooter" hidden>
+            <span class="list-summary" id="listSummary"></span>
+            <div class="pagination" id="pagination"></div>
         </div>
     </section>
 </main>
 <div class="toast" id="toast">
-    <span>✓</span>
-    <strong id="toastText">
-        Готово
-    </strong>
+    <span id="toastIcon">✓</span>
+    <div class="toast-copy">
+        <strong id="toastTitle">Готово</strong>
+        <span id="toastText"></span>
+    </div>
 </div>
 
 <script src="script.js"></script>

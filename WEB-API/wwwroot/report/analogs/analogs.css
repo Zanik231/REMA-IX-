@@ -1433,3 +1433,21 @@ body.dark .analog-number {
     line-height:1.4;
     font-weight:650;
 }
+
+/* =========================================================
+   Тёмная тема: элементы, не покрытые блоком body.dark выше
+   ========================================================= */
+
+body.dark .analog-date{
+    border-color:#344054;
+    color:#d0d5dd;
+    background:#1b2636;
+}
+
+body.dark .segment-bottom strong{
+    color:#69a1ff;
+}
+
+body.dark .segment-bottom span{
+    color:#98a2b3;
+}

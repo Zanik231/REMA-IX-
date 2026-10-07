@@ -1264,7 +1264,7 @@
         button.addEventListener("click", () => generateReport());
         $("interval").addEventListener("change", () => generateReport());
         $("region").addEventListener("change", () => generateReport());
-        $("exportButton").addEventListener("click", exportReport);
+        $("exportButton")?.addEventListener("click", exportReport);
 
         initQuickPeriods();
         initDates();
